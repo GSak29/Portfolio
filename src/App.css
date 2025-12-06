@@ -1,0 +1,304 @@
+/* ------------------ RESET ------------------ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  background: #ffffff;
+  min-height: 100vh;
+}
+
+/* ------------------ LAYOUT ------------------ */
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px 80px;
+  max-width: 1800px;
+  margin: 0 auto;
+  gap: 80px;
+}
+
+.left-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 680px;
+  padding-right: 20px;
+}
+
+.subtitle {
+  font-size: 20px;
+  color: #ff9500;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.headline {
+  font-size: 64px;
+  font-weight: 800;
+  line-height: 1.05;
+  margin-bottom: 24px;
+  color: #1a1a1a;
+}
+
+.bio {
+  font-size: 20px;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 48px;
+  max-width: 580px;
+}
+
+.cv-button {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 48px;
+  background: linear-gradient(135deg, #ff9500, #ff6b00);
+  color: white;
+  text-decoration: none;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(255, 149, 0, 0.3);
+  border: none;
+  cursor: pointer;
+}
+
+.cv-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(255, 149, 0, 0.4);
+  color: #1a1a1a;
+  background: linear-gradient(135deg, #ffa500, #ff7b00);
+}
+
+.cv-button i {
+  font-size: 20px;
+}
+
+/* Button Group */
+.button-group {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 8px;
+}
+
+/* ------------------ RIGHT SECTION ------------------ */
+.right-section {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+  min-width: 500px;
+}
+
+/* Organic Shape */
+.organic-shape {
+  width: 520px;
+  height: 520px;
+  background: linear-gradient(135deg, #ffd500, #ff9500, #ff6b00);
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: morph 10s ease-in-out infinite, floaty 6s ease-in-out infinite;
+  box-shadow: 0 20px 60px rgba(255, 149, 0, 0.15);
+}
+
+@keyframes morph {
+  0%, 100% { 
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; 
+    transform: rotate(0deg);
+  }
+  33% { 
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; 
+    transform: rotate(120deg);
+  }
+  66% { 
+    border-radius: 30% 70% 50% 50% / 50% 60% 40% 60%; 
+    transform: rotate(240deg);
+  }
+}
+
+@keyframes floaty {
+  0%   { transform: translateY(0) scale(1); }
+  50%  { transform: translateY(-15px) scale(1.03); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+/* Portrait Holder */
+.portrait-placeholder {
+  width: 75%;
+  height: 75%;
+  background: white;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+  border: 8px solid rgba(255, 255, 255, 0.9);
+  transition: transform 0.5s ease;
+}
+
+.organic-shape:hover .portrait-placeholder {
+  transform: scale(1.05);
+}
+
+.portrait-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: transform 0.8s ease;
+}
+
+.portrait-placeholder:hover img {
+  transform: scale(1.1);
+}
+
+/* ------------------ RESPONSIVE ------------------ */
+
+/* LARGE DESKTOP */
+@media (min-width: 1600px) {
+  .container {
+    padding: 40px 120px;
+    gap: 120px;
+  }
+  
+  .organic-shape {
+    width: 580px;
+    height: 580px;
+  }
+}
+
+/* MEDIUM DESKTOP */
+@media (max-width: 1200px) {
+  .container {
+    padding: 40px 60px;
+    gap: 60px;
+  }
+  
+  .headline {
+    font-size: 56px;
+  }
+  
+  .organic-shape {
+    width: 480px;
+    height: 480px;
+  }
+  
+  .right-section {
+    min-width: 450px;
+  }
+}
+
+/* TABLETS */
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+    text-align: center;
+    gap: 60px;
+    padding: 40px 40px;
+  }
+  
+  .left-section {
+    max-width: 800px;
+    padding-right: 0;
+    align-items: center;
+  }
+  
+  .bio {
+    text-align: center;
+    max-width: 700px;
+  }
+  
+  .cv-button {
+    align-self: center;
+  }
+  
+  .right-section {
+    min-width: auto;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .organic-shape {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+/* LARGE MOBILE */
+@media (max-width: 768px) {
+  .container {
+    padding: 30px 30px;
+    gap: 50px;
+  }
+  
+  .headline {
+    font-size: 44px;
+  }
+  
+  .bio {
+    font-size: 18px;
+    margin-bottom: 40px;
+  }
+  
+  .organic-shape {
+    width: 340px;
+    height: 340px;
+  }
+  
+  .portrait-placeholder {
+    width: 70%;
+    height: 70%;
+  }
+}
+
+/* SMALL MOBILE */
+@media (max-width: 480px) {
+  .container {
+    padding: 25px 20px;
+    gap: 40px;
+  }
+  
+  .headline {
+    font-size: 36px;
+  }
+  
+  .subtitle {
+    font-size: 18px;
+  }
+  
+  .bio {
+    font-size: 16px;
+    margin-bottom: 32px;
+  }
+  
+  .cv-button {
+    padding: 12px 36px;
+    font-size: 16px;
+  }
+  
+  .organic-shape {
+    width: 280px;
+    height: 280px;
+  }
+  
+  .portrait-placeholder {
+    width: 65%;
+    height: 65%;
+  }
+}
