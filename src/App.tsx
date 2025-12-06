@@ -12,7 +12,7 @@ function App() {
     return () => window.removeEventListener("load", onLoad);
   }, []);
 
-  const bubbleCount = 12;
+  const bubbleCount = 10;
   const bubbleRefs = useRef<(HTMLSpanElement | null)[]>([]);
   useEffect(() => {
     type Tmr = { id: number; timeout: boolean };
@@ -80,9 +80,9 @@ function App() {
             Development.
           </p>
           <div className="button-group">
-            <a href="#" className="cv-button">
+            <a href="/Resume.pdf" download className="cv-button">
               Download CV
-              <i className="bi bi-cloud-download"></i>
+              <i className="bi bi-file-earmark-arrow-down-fill"></i>
             </a>
             <FancyButton/>
           </div>

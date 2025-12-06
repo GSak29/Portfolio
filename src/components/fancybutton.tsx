@@ -27,7 +27,8 @@ export default function FancyButton() {
             <div className="button-inner">
               <div className="back"></div>
               <div className="front">
-                <span className="button-text">Explore</span>
+                <span className="button-text"><i className="bi bi-compass"></i>
+</span>
               </div>
             </div>
 

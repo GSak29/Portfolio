@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600&display=swap');
+
 /* ------------------ RESET ------------------ */
 * {
   margin: 0;
@@ -58,34 +61,125 @@ body {
   margin-bottom: 48px;
   max-width: 580px;
 }
-
 .cv-button {
+  font-family: 'Syne', sans-serif;
   width: fit-content;
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  padding: 14px 48px;
-  background: linear-gradient(135deg, #ff9500, #ff6b00);
-  color: white;
+  padding: 16px 48px;
+
+  /* 🔥 Glassy Gradient */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 195, 0, 0.85),
+    rgba(255, 119, 0, 0.85)
+  );
+
+  color: #111;
   text-decoration: none;
-  border-radius: 20px;
-  font-weight: 600;
-  font-size: 18px;
-  transition: all 0.3s ease;
-  box-shadow: 0 6px 20px rgba(255, 149, 0, 0.3);
-  border: none;
+
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
   cursor: pointer;
+
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
+  /* ✅ Glass Effect */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  /* ✅ Soft modern glow (matches your photo ring) */
+  box-shadow:
+    0 12px 30px rgba(255, 153, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.65);
+
+  transition: 
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    filter 0.35s ease,
+    background 0.35s ease;
 }
 
+/* ✨ Glass light reflection sweep */
+.cv-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 120%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.7),
+    transparent 70%
+  );
+  transform: skewX(-20deg);
+  transition: left 0.9s ease;
+}
+
+.cv-button:hover::before {
+  left: 120%;
+}
+
+/* 🌟 Soft hover glow */
+.cv-button::after {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 170, 0, 0.45),
+    transparent 65%
+  );
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.cv-button:hover::after {
+  opacity: 1;
+}
+
+/* ✅ Premium hover (no ugly block 3D) */
 .cv-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(255, 149, 0, 0.4);
-  color: #1a1a1a;
-  background: linear-gradient(135deg, #ffa500, #ff7b00);
+  transform: translateY(-4px);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 210, 0, 0.9),
+    rgba(255, 140, 0, 0.9)
+  );
+
+  box-shadow:
+    0 20px 45px rgba(255, 153, 0, 0.50),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+  filter: brightness(1.05);
 }
 
+/* ✅ Clean soft press */
+.cv-button:active {
+  transform: translateY(1px);
+  box-shadow:
+    0 10px 25px rgba(255, 153, 0, 0.35),
+    inset 0 3px 8px rgba(0, 0, 0, 0.9);
+}
+
+/* 🎯 Elegant icon motion */
 .cv-button i {
-  font-size: 20px;
+  font-size: 25px;
+  transition: transform 0.35s ease;
+}
+
+.cv-button:hover i {
+  transform: translateY(-2px) scale(1.12);
 }
 
 /* Button Group */
