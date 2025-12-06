@@ -12,7 +12,8 @@ function App() {
     return () => window.removeEventListener("load", onLoad);
   }, []);
 
-  const bubbleCount = 10;
+  const bubbleCount = 12;
+  const darkBubbleCount = 8;
   const bubbleRefs = useRef<(HTMLSpanElement | null)[]>([]);
   useEffect(() => {
     type Tmr = { id: number; timeout: boolean };
@@ -63,8 +64,12 @@ function App() {
   return (
     <>
       <div className="bubble-field">
-        {Array.from({ length: bubbleCount }).map((_, i) => (
-          <span key={i} className="bubble" ref={(el) => (bubbleRefs.current[i] = el)} />
+        {Array.from({ length: bubbleCount + darkBubbleCount }).map((_, i) => (
+          <span
+            key={i}
+            className={i < bubbleCount ? "bubble" : "bubble bubble--dark"}
+            ref={(el) => (bubbleRefs.current[i] = el)}
+          />
         ))}
       </div>
       <div className={`container site-enter ${ready ? "ready" : ""}`}>
