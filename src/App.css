@@ -297,8 +297,97 @@ body {
     height: 280px;
   }
   
-  .portrait-placeholder {
-    width: 65%;
-    height: 65%;
-  }
+.portrait-placeholder {
+  width: 65%;
+  height: 65%;
 }
+}
+
+.bubble-field {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+/* Background bubbles: random wiggle via JS-driven transforms */
+.bubble-field {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(255,255,255,0.2) 40%), linear-gradient(135deg, #ffd500, #ff9500);
+  opacity: 0.18;
+  filter: blur(10px);
+  will-change: transform;
+  transition: transform var(--moveDur, 14s) cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 10px 30px rgba(255, 149, 0, 0.18);
+  transform: translate(var(--tx, 0px), var(--ty, 0px)) rotate(var(--rot, 0deg)) scale(calc(var(--scale, 1) * var(--jelly, 1)));
+  animation: bubble-jelly var(--jellyDur, 10s) ease-in-out infinite;
+}
+
+@property --jelly { syntax: '<number>'; inherits: false; initial-value: 1; }
+@keyframes bubble-jelly {
+  0% { --jelly: 1 }
+  25% { --jelly: 1.05 }
+  50% { --jelly: 0.98 }
+  75% { --jelly: 1.03 }
+  100% { --jelly: 1 }
+}
+
+.bubble::before {
+  content: "";
+  position: absolute;
+  left: 15%;
+  top: 10%;
+  width: 38%;
+  height: 38%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(255,255,255,0.0) 70%);
+  filter: blur(4px);
+  opacity: 0.7;
+}
+
+.bubble::after {
+  content: "";
+  position: absolute;
+  right: 6%;
+  bottom: 8%;
+  width: 28%;
+  height: 28%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.6), rgba(255,255,255,0.0) 70%);
+  opacity: 0.4;
+}
+
+/* Page enter animations: components slide and fade into place */
+.site-enter .subtitle,
+.site-enter .headline,
+.site-enter .bio,
+.site-enter .button-group {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+.site-enter.ready .subtitle { opacity: 1; transform: none; transition-delay: 0.05s; }
+.site-enter.ready .headline { opacity: 1; transform: none; transition-delay: 0.25s; }
+.site-enter.ready .bio { opacity: 1; transform: none; transition-delay: 0.5s; }
+.site-enter.ready .button-group { opacity: 1; transform: none; transition-delay: 0.7s; }
+
+.site-enter .right-section {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 1.3s cubic-bezier(0.22, 1, 0.36, 1), transform 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.site-enter.ready .right-section { opacity: 1; transform: none; transition-delay: 0.6s; }
+
+.site-enter .organic-shape {
+  transform: translateX(12px) scale(0.98);
+  transition: transform 1.3s ease;
+}
+.site-enter.ready .organic-shape { transform: none; transition-delay: 0.65s; }

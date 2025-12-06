@@ -11,7 +11,12 @@ export default function FancyButton() {
 
   const handleNavClick = (href: string) => {
     setShowPopup(false);
-    // Add navigation logic here
+    const id = href.startsWith('#') ? href.slice(1) : href;
+    if (typeof history.pushState === 'function') {
+      history.pushState(null, '', `#${id}`);
+    }
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   return (
