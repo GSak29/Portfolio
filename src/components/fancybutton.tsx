@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function FancyButton() {
   const [showPopup, setShowPopup] = useState(false);
+  const navigate = useNavigate();
 
   const navItems = [
-    { id: 1, key: 'My Works', label: 'My Works', href: '#My Works' },
+    { id: 1, key: 'My Works', label: 'My Works', href: '/works' },
     { id: 2, key: 'Achievements', label: 'Achievements', href: '#Achievements' },
     { id: 3, key: 'Certifications', label: 'Certifications', href: '#Certifications' },
     { id: 4, key: 'Skills', label: 'Skills', href: '#Skills' },
@@ -12,10 +14,20 @@ export default function FancyButton() {
   ];
 
   const handleNavClick = (href: string) => {
-    const id = href.startsWith('#') ? href.slice(1) : href;
     setShowPopup(false);
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    
+    // Handle route navigation
+    if (href === '/works') {
+      navigate('/works');
+      return;
+    }
+    
+    // Handle anchor navigation
+    if (href.startsWith('#')) {
+      const id = href.slice(1);
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   };
 
   const renderIcon = (key: string) => {
@@ -49,7 +61,7 @@ export default function FancyButton() {
   return (
     <>
       <div className="button-wrapper">  
-        <button className="button" onClick={() => setShowPopup(true)} aria-haspopup="true" aria-expanded={showPopup}>
+        <button className="button" onClick={() => setShowPopup(true)} aria-haspopup="true" aria-expanded="false" title="Navigation menu">
           <div className="bloom-container">
             <span className="button-label"></span>
             <div className="button-container-main">

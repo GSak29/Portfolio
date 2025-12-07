@@ -2,10 +2,12 @@ import "./App.css";
 import "./components/fancybutton.css";
 import FancyButton from "./components/fancybutton";
 import { useEffect, useRef, useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import NextPage from "./pages/works";
 
-function App() {
-  const [showPDF, setShowPDF] = useState(false);
+function Home() {
   const [ready, setReady] = useState(false);
+  const [showPdf, setShowPdf] = useState(false);
   useEffect(() => {
     const onLoad = () => setTimeout(() => setReady(true), 300);
     if (document.readyState === "complete") onLoad();
@@ -13,15 +15,13 @@ function App() {
     return () => window.removeEventListener("load", onLoad);
   }, []);
 
-  const bubbleCount = 12;
-  const darkBubbleCount = 8;
+  const bubbleCount = 10;
+  const darkBubbleCount = 6;
   const bubbleRefs = useRef<(HTMLSpanElement | null)[]>([]);
   useEffect(() => {
     type Tmr = { id: number; timeout: boolean };
     const timers: Tmr[] = [];
-    const rand = (min: number, max: number) =>
-      Math.random() * (max - min) + min;
-    // initialize positions/sizes without setState
+    const rand = (min: number, max: number) => Math.random() * (max - min) + min;
     bubbleRefs.current.forEach((el) => {
       if (!el) return;
       el.style.top = `${rand(6, 90)}%`;
@@ -60,11 +60,10 @@ function App() {
       timers.push({ id: t1, timeout: true });
     });
     return () => {
-      timers.forEach((t) =>
-        t.timeout ? window.clearTimeout(t.id) : window.clearInterval(t.id)
-      );
+      timers.forEach((t) => (t.timeout ? window.clearTimeout(t.id) : window.clearInterval(t.id)));
     };
   }, []);
+
   return (
     <>
       <div className="bubble-field">
@@ -77,54 +76,29 @@ function App() {
         ))}
       </div>
       <div className={`container site-enter ${ready ? "ready" : ""}`}>
-        {/* LEFT SIDE */}
         <div className="left-section">
-          <div className="subtitle">
-            ECE • Embedded Systems • Software Explorer
-          </div>
-
+          <div className="subtitle">ECE . EMBEDDED SYSTEMS . SOFTWARE EXPLORER</div>
           <h1 className="headline">Hello, I'm Guru Sakthi S</h1>
-
           <p className="bio">
-            &nbsp;&nbsp;&nbsp;&nbsp;A perfectionist with a determined mind, I
-            explore the space between electronics and software. I learn quickly,
-            work relentlessly, and build with intent.
+            A perfectionist with a determined mind, I explore the space
+between electronics and software. I learn quickly, work
+relentlessly, and build with intent.
           </p>
           <div className="button-group">
-            <button className="cv-button" onClick={() => setShowPDF(true)}>
+            <a
+              href="/Resume.pdf"
+              className="cv-button"
+              onClick={(e) => {
+                e.preventDefault();
+                setShowPdf(true);
+              }}
+            >
               View My CV
-              <i className="bi bi-eye-fill"></i>
-            </button>
-            {showPDF && (
-              <div className="pdf-modal">
-                <div className="pdf-content">
-                  {/* Close Button */}
-                  <button
-                    className="close-btn"
-                    onClick={() => setShowPDF(false)}
-                  >
-                    ×
-                  </button>
-
-                  {/* PDF Viewer */}
-                  <iframe
-                    src="/Resume.pdf"
-                    className="pdf-frame"
-                    title="Resume Viewer"
-                  ></iframe>
-
-                  {/* Download Btn */}
-                  <a href="/Resume.pdf" download className="download-btn">
-                    Download PDF <i className="bi bi-file-earmark-arrow-down-fill"></i>
-                  </a>
-                </div>
-              </div>
-            )}
+              <i className="bi bi-file-earmark-text"></i>
+            </a>
             <FancyButton />
-            
           </div>
         </div>
-
         <div className="right-section">
           <div className="organic-shape">
             <div className="portrait-placeholder">
@@ -133,9 +107,34 @@ function App() {
           </div>
         </div>
       </div>
+      {showPdf && (
+        <div className="popup-overlay" onClick={() => setShowPdf(false)}>
+          <div className="popup-content pdf" onClick={(e) => e.stopPropagation()}>
+            <button
+              className="popup-close"
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowPdf(false);
+              }}
+              aria-label="Close CV viewer"
+            >
+              ✕
+            </button>
+            <iframe className="pdf-frame" src="/Resume.pdf" title="Resume PDF" />
+          </div>
+        </div>
+      )}
     </>
   );
-  
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/works" element={<NextPage />} />
+    </Routes>
+  );
 }
 
 export default App;
