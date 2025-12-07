@@ -1,9 +1,10 @@
 import "./App.css";
-import "./components/fancybutton.css"
+import "./components/fancybutton.css";
 import FancyButton from "./components/fancybutton";
 import { useEffect, useRef, useState } from "react";
 
 function App() {
+  const [showPDF, setShowPDF] = useState(false);
   const [ready, setReady] = useState(false);
   useEffect(() => {
     const onLoad = () => setTimeout(() => setReady(true), 300);
@@ -18,7 +19,8 @@ function App() {
   useEffect(() => {
     type Tmr = { id: number; timeout: boolean };
     const timers: Tmr[] = [];
-    const rand = (min: number, max: number) => Math.random() * (max - min) + min;
+    const rand = (min: number, max: number) =>
+      Math.random() * (max - min) + min;
     // initialize positions/sizes without setState
     bubbleRefs.current.forEach((el) => {
       if (!el) return;
@@ -58,7 +60,9 @@ function App() {
       timers.push({ id: t1, timeout: true });
     });
     return () => {
-      timers.forEach((t) => (t.timeout ? window.clearTimeout(t.id) : window.clearInterval(t.id)));
+      timers.forEach((t) =>
+        t.timeout ? window.clearTimeout(t.id) : window.clearInterval(t.id)
+      );
     };
   }, []);
   return (
@@ -73,23 +77,51 @@ function App() {
         ))}
       </div>
       <div className={`container site-enter ${ready ? "ready" : ""}`}>
-        
         {/* LEFT SIDE */}
         <div className="left-section">
-          <div className="subtitle">Electronics & Communication Engineer</div>
+          <div className="subtitle">
+            ECE • Embedded Systems • Software Explorer
+          </div>
 
           <h1 className="headline">Hello, I'm Guru Sakthi S</h1>
 
           <p className="bio">
-            Bridging Electronics, Communication Systems, and Modern Software
-            Development.
+            &nbsp;&nbsp;&nbsp;&nbsp;A perfectionist with a determined mind, I
+            explore the space between electronics and software. I learn quickly,
+            work relentlessly, and build with intent.
           </p>
           <div className="button-group">
-            <a href="/Resume.pdf" download className="cv-button">
-              Download CV
-              <i className="bi bi-file-earmark-arrow-down-fill"></i>
-            </a>
-            <FancyButton/>
+            <button className="cv-button" onClick={() => setShowPDF(true)}>
+              View My CV
+              <i className="bi bi-eye-fill"></i>
+            </button>
+            {showPDF && (
+              <div className="pdf-modal">
+                <div className="pdf-content">
+                  {/* Close Button */}
+                  <button
+                    className="close-btn"
+                    onClick={() => setShowPDF(false)}
+                  >
+                    ×
+                  </button>
+
+                  {/* PDF Viewer */}
+                  <iframe
+                    src="/Resume.pdf"
+                    className="pdf-frame"
+                    title="Resume Viewer"
+                  ></iframe>
+
+                  {/* Download Btn */}
+                  <a href="/Resume.pdf" download className="download-btn">
+                    Download PDF <i className="bi bi-file-earmark-arrow-down-fill"></i>
+                  </a>
+                </div>
+              </div>
+            )}
+            <FancyButton />
+            
           </div>
         </div>
 
@@ -100,10 +132,10 @@ function App() {
             </div>
           </div>
         </div>
-
       </div>
     </>
   );
+  
 }
 
 export default App;
