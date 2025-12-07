@@ -13,6 +13,30 @@
   border: none;
 }
 
+.button-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.button-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #666;
+  letter-spacing: 0.5px;
+  animation: labelFade 0.6s ease-out;
+}
+
+@keyframes labelFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .button .bloom-container {
   position: relative;
   transition: all 0.2s ease-in-out;
@@ -136,59 +160,56 @@
   justify-content: center;
   z-index: 9999;
   backdrop-filter: blur(4px);
-  animation: fadeIn 0.3s ease-in-out;
+  animation: fadeInBlur 0.4s ease-out;
   perspective: 1000px;
   overflow: auto;
-  padding: 20px;
+  padding: 40px 20px;
 }
 
-@keyframes fadeIn {
+@keyframes fadeInBlur {
   from {
     opacity: 0;
+    backdrop-filter: blur(0px);
   }
   to {
     opacity: 1;
+    backdrop-filter: blur(4px);
   }
 }
 
 .popup-content {
   position: relative;
-  width: 90%;
-  max-width: 600px;
-  padding: 0;
+  width: auto;
+  max-width: 95vw;
+  padding: 32px 40px;
   background: transparent;
-  border-radius: 14px;
+  border-radius: 32px;
   overflow: visible;
-  animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   z-index: 10000;
   flex-shrink: 0;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
+  gap: 32px;
+  animation: popupSlideUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.popup-content::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 14px;
-  padding: 3px;
-  background: conic-gradient(from 0deg, #ff9500, #ffd500, #ff6b00, #ff9500);
-  z-index: 0;
-  opacity: 1;
-  animation: borderFlow 4s linear infinite;
+@keyframes popupSlideUp {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
+/* remove heavy decorative card - show only nav pill */
+.popup-content::before,
 .popup-content::after {
-  content: '';
-  position: absolute;
-  inset: 3px;
-  border-radius: 11px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(24px);
-  z-index: 1;
-  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+  display: none;
 }
 
 @keyframes borderFlow {
@@ -213,26 +234,46 @@
 
 .popup-close {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 36px;
-  height: 36px;
+  top: 2px;
+  right: 2px;
+  width: 60px;
+  height: 60px;
   border: none;
-  background: rgba(255, 149, 0, 0.1);
+  background: rgba(255, 139, 23, 0.501);
   border-radius: 50%;
-  font-size: 20px;
-  color: #ff9500;
+  font-size: 26px;
+  color: #000000a6;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
-  z-index: 100;
+  transition: all 0.3s cubic-bezier(0.2, 1, 0.3, 1);
+  border: 2px solid rgba(255, 200, 0, 0.753);
+  animation: closeButtonPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  z-index: 10001;
+}
+
+@keyframes closeButtonPop {
+  from {
+    opacity: 0;
+    transform: scale(0) rotate(-180deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
 }
 
 .popup-close:hover {
-  background: rgba(255, 149, 0, 0.2);
+  background: rgba(220, 212, 202, 0.693);
   transform: scale(1.1) rotate(90deg);
+  box-shadow: 0 8px 20px rgba(43, 43, 43, 0.2);
+  border-color: rgba(249, 249, 249, 0.729);
+}
+
+.popup-close:active {
+  transform: scale(0.95) rotate(90deg);
 }
 
 .popup-grid {
@@ -556,4 +597,318 @@
     right: 8px;
     font-size: 16px;
   }
+}
+/* ------------------ Pill Nav Popup (new) ------------------ */
+.nav-popup {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 8px 28px;
+  z-index: 5;
+}
+
+.nav-pill {
+  list-style: none;
+  display: flex;
+  gap: 36px;
+  align-items: center;
+  padding: 24px 32px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transform-origin: center;
+  animation: pillEntrance 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@keyframes pillEntrance {
+  from { 
+    opacity: 0; 
+    transform: scale(0.9) translateY(20px);
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1) translateY(0);
+  }
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.9;
+  transition: transform 220ms cubic-bezier(0.2,1,0.3,1), opacity 160ms ease, box-shadow 220ms ease, color 160ms ease;
+  position: relative;
+}
+
+.nav-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #666;
+  font-weight: 600;
+}
+
+.nav-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff8c1a, #ffb347);
+  display: grid;
+  place-items: center;
+  transform: translateY(0);
+  transition: all 0.3s cubic-bezier(0.2, 1, 0.3, 1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), inset -2px -2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  position: relative;
+  color: white;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.nav-icon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent);
+  opacity: 1;
+  transition: all 0.3s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* small animated ring behind icon on hover */
+.nav-icon::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: transparent;
+  transition: all 0.3s cubic-bezier(0.2, 1, 0.3, 1);
+  z-index: 0;
+}
+
+.nav-icon img {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+}
+
+.nav-label {
+  font-size: 13px;
+  color: #444;
+}
+
+/* raised center effect: middle item gets highlighted */
+.nav-item--2 { opacity: 0.95; }
+
+/* staggered appearance for nav items */
+.nav-item { 
+  animation: itemPop 0.5s cubic-bezier(0.2, 0.9, 0.2, 1) both; 
+}
+.nav-item--1 { animation-delay: 0.15s; }
+.nav-item--2 { animation-delay: 0.2s; }
+.nav-item--3 { animation-delay: 0.25s; }
+.nav-item--4 { animation-delay: 0.3s; }
+.nav-item--5 { animation-delay: 0.35s; }
+
+@keyframes itemPop {
+  0% { 
+    opacity: 0; 
+    transform: translateY(20px) scale(0.6) rotateY(-20deg);
+  }
+  60% { 
+    transform: translateY(-8px) scale(1.05) rotateY(5deg);
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0) scale(1) rotateY(0deg);
+  }
+}
+
+/* Hover or focus on any item raises it above others */
+.nav-item:hover,
+.nav-item:focus-within {
+  opacity: 1;
+  transform: translateY(-16px) scale(1.1);
+}
+
+.nav-item:hover .nav-icon,
+.nav-item:focus-within .nav-icon {
+  transform: translateY(-12px) scale(1.1) rotateX(-15deg);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2), inset -2px -2px 8px rgba(0, 0, 0, 0.15);
+  color: #000;
+}
+
+.nav-item:hover .nav-icon::before,
+.nav-item:focus-within .nav-icon::before {
+  opacity: 0.3;
+}
+
+.nav-item:hover .nav-icon::after,
+.nav-item:focus-within .nav-icon::after {
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+.nav-item:hover .nav-label,
+.nav-item:focus-within .nav-label {
+  color: #ff9500;
+  font-weight: 700;
+}
+
+.nav-pill::after {
+  pointer-events: none;
+}
+.nav-icon::after {
+  pointer-events: none;
+}
+
+/* subtle entrance for the whole popup */
+
+.popup-content { animation: popupShow 360ms cubic-bezier(0.2,0.8,0.2,1) forwards; }
+
+@keyframes popupShow {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* staggered appearance for nav items */
+.nav-item { animation: itemPop 420ms cubic-bezier(0.2,0.9,0.2,1) both; }
+.nav-item--1 { animation-delay: 60ms; }
+.nav-item--2 { animation-delay: 120ms; }
+.nav-item--3 { animation-delay: 180ms; }
+.nav-item--4 { animation-delay: 240ms; }
+.nav-item--5 { animation-delay: 300ms; }
+
+@keyframes itemPop {
+  0% { opacity: 0; transform: translateY(8px) scale(0.94); }
+  60% { transform: translateY(-6px) scale(1.03); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* subtle pulsing of icon center to give life */
+@keyframes iconPulse {
+  0% { transform: translateY(0) scale(1); filter: saturate(1); }
+  50% { transform: translateY(-2px) scale(1.02); filter: saturate(1.05); }
+  100% { transform: translateY(0) scale(1); filter: saturate(1); }
+}
+
+
+/* gradient sweep across the pill for a trendy effect */
+.nav-pill::after {
+  content: '';
+  position: absolute;
+  left: -40%;
+  top: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255,255,255,0.0), rgba(255,255,255,0.55), rgba(255,255,255,0.0));
+  transform: skewX(-12deg);
+  opacity: 0.0;
+  pointer-events: none;
+}
+
+/* run sweep once on show */
+.popup-content.show .nav-pill::after { animation: sweep 900ms ease-in-out 1; opacity: 1; }
+
+@keyframes sweep {
+  0% { left: -40%; opacity: 0; }
+  30% { opacity: 0.9; }
+  100% { left: 140%; opacity: 0; }
+}
+
+@keyframes pillEntrance {
+  from { opacity: 0; transform: translateY(20px) scale(0.98) }
+  to { opacity: 1; transform: translateY(0) scale(1) }
+}
+
+/* curve decorative notch behind middle icon */
+/* removed decorative notch to keep all items on same baseline */
+
+/* responsive */
+@media (max-width: 768px) {
+  .popup-overlay {
+    padding: 30px 15px;
+  }
+  
+  .popup-content {
+    max-width: 92vw;
+    padding: 24px 28px;
+    gap: 24px;
+    border-radius: 28px;
+  }
+  
+  .nav-pill {
+    gap: 24px;
+    padding: 18px 24px;
+    border-radius: 40px;
+  }
+  
+  .nav-icon { 
+    width: 52px; 
+    height: 52px;
+  }
+  
+  .nav-label { 
+    font-size: 12px;
+  }
+  
+  .popup-close {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .popup-overlay {
+    padding: 20px 12px;
+  }
+  
+  .popup-content {
+    max-width: 90vw;
+    padding: 20px 22px;
+    gap: 16px;
+    border-radius: 24px;
+    flex-direction: column;
+  }
+  
+  .nav-pill { 
+    gap: 16px; 
+    padding: 14px 16px;
+    border-radius: 32px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .nav-icon { 
+    width: 48px; 
+    height: 48px;
+  }
+  
+  .nav-label { 
+    font-size: 11px;
+  }
+  
+  .popup-close {
+    position: static;
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+    order: 1;
+    align-self: flex-end;
+  }
+}
 }
