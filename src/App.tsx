@@ -71,7 +71,7 @@ function Home() {
           <span
             key={i}
             className={i < bubbleCount ? "bubble" : "bubble bubble--dark"}
-            ref={(el) => (bubbleRefs.current[i] = el)}
+            ref ={(el) => (bubbleRefs.current[i] = el)}
           />
         ))}
       </div>
@@ -80,7 +80,7 @@ function Home() {
           <div className="subtitle">ECE . EMBEDDED SYSTEMS . SOFTWARE EXPLORER</div>
           <h1 className="headline">Hello, I'm Guru Sakthi S</h1>
           <p className="bio">
-            A perfectionist with a determined mind, I explore the space
+           &nbsp; &nbsp; &nbsp; &nbsp; A perfectionist with a determined mind, I explore the space
 between electronics and software. I learn quickly, work
 relentlessly, and build with intent.
           </p>
@@ -94,7 +94,7 @@ relentlessly, and build with intent.
               }}
             >
               View My CV
-              <i className="bi bi-file-earmark-text"></i>
+             <i className="bi bi-eye-fill"></i>
             </a>
             <FancyButton />
           </div>
@@ -109,18 +109,24 @@ relentlessly, and build with intent.
       </div>
       {showPdf && (
         <div className="popup-overlay" onClick={() => setShowPdf(false)}>
-          <div className="popup-content pdf" onClick={(e) => e.stopPropagation()}>
+          <div className="popup-center" onClick={(e) => e.stopPropagation()}>
             <button
-              className="popup-close"
-              onClick={(e) => {
-                e.stopPropagation();
-                setShowPdf(false);
-              }}
+              className="popup-close outside"
+              onClick={() => setShowPdf(false)}
               aria-label="Close CV viewer"
             >
               ✕
             </button>
-            <iframe className="pdf-frame" src="/Resume.pdf" title="Resume PDF" />
+            <div className="popup-content pdf">
+              <iframe
+                className="pdf-frame"
+                src="/Resume.pdf"
+                title="Resume PDF"
+              />
+              <div className="pdf-actions">
+                <a href="/Resume.pdf" download className="download-btn" aria-label="Download CV">Download &nbsp;&nbsp;<i className="bi bi-download"></i></a>
+              </div>
+            </div>
           </div>
         </div>
       )}

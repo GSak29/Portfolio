@@ -131,6 +131,7 @@ body {
 
 /* 🌟 Soft hover glow */
 .cv-button::after {
+  
   content: "";
   position: absolute;
   inset: -10px;
@@ -141,15 +142,18 @@ body {
   );
   z-index: -1;
   opacity: 0;
+  
   transition: opacity 0.4s ease;
 }
 
 .cv-button:hover::after {
   opacity: 1;
+  
 }
 
 /* ✅ Premium hover (no ugly block 3D) */
 .cv-button:hover {
+  color:#ffffff;
   transform: translateY(-4px);
   background: linear-gradient(
     135deg,
