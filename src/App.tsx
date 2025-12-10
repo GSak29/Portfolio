@@ -71,7 +71,7 @@ function Home() {
           <span
             key={i}
             className={i < bubbleCount ? "bubble" : "bubble bubble--dark"}
-            ref ={(el) => (bubbleRefs.current[i] = el)}
+            ref={(el) => { bubbleRefs.current[i] = el; }}
           />
         ))}
       </div>
