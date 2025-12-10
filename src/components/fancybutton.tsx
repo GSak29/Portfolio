@@ -5,37 +5,7 @@ export default function FancyButton() {
   const [showPopup, setShowPopup] = useState(false);
   const navigate = useNavigate();
 
-  
 
-  
-
-  const renderIcon = (key: string) => {
-    // simple inline SVG icons (no external images)
-    switch (key) {
-      case 'My Works':
-        return (
-          <i className="bi bi-layers"></i>
-        );
-      case 'Achievements':
-        return (
-          <i className="bi bi-trophy"></i>
-        );
-      case 'Certifications':
-        return (
-          <i className="bi bi-file-earmark-text"></i>
-        );
-      case 'Skills':
-        return (
-           <i className="bi bi-code-slash"></i>
-        );
-      case 'Contact':
-        return (
-          <i className="bi bi-chat-dots"></i>
-        );
-      default:
-        return null;
-    }
-  };
 
   return (
     <>
@@ -77,13 +47,13 @@ export default function FancyButton() {
               </button>
               <div className="details-header">
                 <div className="nav-icon" aria-hidden>
-                  {renderIcon('My Works')}
+                 <img src="src/assets/mine.png" alt="Navigation icon"/>
                 </div>
-                <h3 className="details-title">My Works</h3>
+                <h3 className="details-title">Beyond the Resume??</h3><img src="src/assets/st.png" height="100" width="40" alt="Decorative element"/>
               </div>
-              <p className="details-body">Explore projects, achievements, certifications, and ideas presented in a fast, responsive layout.</p>
+              <p className="details-body">Explore My Skills, projects, achievements, certifications, and ideas presented in a fast, responsive layout.</p>
               <div className="details-actions">
-                <button className="btn primary" onClick={() => { setShowPopup(false); navigate('/works'); }}>Open Works</button>
+                <button className="btn primary" onClick={() => { setShowPopup(false); navigate('/works'); }}>Explore</button>
                 <button className="btn ghost" onClick={() => { setShowPopup(false); }}>Back</button>
               </div>
             </div>
