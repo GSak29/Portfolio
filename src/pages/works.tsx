@@ -75,15 +75,39 @@ export default function Works() {
 
   const [activeId, setActiveId] = useState<string>('about');
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(typeof window !== 'undefined' ? window.innerWidth < 640 : true);
+
+  useEffect(() => {
+    const onResize = () => {
+      const mobile = window.innerWidth < 640;
+      setIsMobile(mobile);
+      if (!mobile) setMenuOpen(false);
+    };
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setMenuOpen(false); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [menuOpen]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
+        entries.forEach((entry) => {
+          const sec = entry.target as HTMLElement;
+          if (entry.isIntersecting) sec.classList.add('is-visible');
+          else sec.classList.remove('is-visible');
+        });
         const visible = entries
           .filter((e) => e.isIntersecting)
           .sort((a, b) => (b.intersectionRatio || 0) - (a.intersectionRatio || 0))[0];
-        if (visible && visible.target && (visible.target as HTMLElement).id) {
-          setActiveId((visible.target as HTMLElement).id);
+        if (visible && visible.target) {
+          const idEl = (visible.target as HTMLElement).querySelector('[id]') as HTMLElement | null;
+          if (idEl && idEl.id) setActiveId(idEl.id);
         }
       },
       { root: null, threshold: [0.2, 0.5, 0.8], rootMargin: '0px 0px -30% 0px' }
@@ -127,22 +151,12 @@ export default function Works() {
           />
         ))}
       </div>
-      <nav className="works__nav fixed top-0 left-0 right-0 z-50" aria-label="Works navigation">
-        <div className="flex items-center justify-between px-4 sm:px-6 py-2">
-          <button
-            className={`works__hamburger ${menuOpen ? 'is-open' : ''} sm:hidden`}
-            aria-controls="works-navlinks"
-            aria-expanded={menuOpen}
-            aria-label="Toggle navigation"
-            onClick={() => setMenuOpen((v) => !v)}
-          >
-            <span className="hamburger-box" aria-hidden>
-              <span className="hamburger-bar" />
-              <span className="hamburger-bar" />
-              <span className="hamburger-bar" />
-            </span>
-          </button>
-
+      <nav className="works__nav" aria-label="Works navigation">
+        <div className="works__nav-inner">
+          <a className="Btn back-home" href="/" aria-label="Back to Home">
+            <span className="svgWrapper"><i className="bi bi-house svgIcon" /></span>
+            <span className="text">Home</span>
+          </a>
           <ul
             id="works-navlinks"
             className={`works__nav-links ${menuOpen ? 'is-open' : ''}`}
@@ -166,7 +180,40 @@ export default function Works() {
               </li>
             ))}
           </ul>
+          <button
+            className={`works__hamburger ${menuOpen ? 'is-open' : ''}`}
+            aria-controls="works-navlinks"
+            aria-expanded={menuOpen}
+            aria-label="Toggle navigation"
+            onClick={() => setMenuOpen((v) => !v)}
+          >
+            {menuOpen ? <i className="bi bi-x"></i> : <i className="bi bi-list"></i>}
+          </button>
         </div>
+        {isMobile && (
+          <aside className={`works__drawer ${menuOpen ? 'is-open' : ''}`} aria-hidden={!menuOpen}>
+            <div className="drawer-header">
+              <button className="drawer-close" aria-label="Close menu" onClick={() => setMenuOpen(false)}>
+                <i className="bi bi-x" />
+              </button>
+            </div>
+            <ul className="drawer-links" role="menubar">
+            {navItems.map(({ id, label }) => (
+              <li key={id} role="none">
+                <a
+                  role="menuitem"
+                  className={`navlink ${activeId === id ? 'active' : ''}`}
+                  href={`#${id}`}
+                  onClick={(e) => { e.preventDefault(); handleNavClick(id); }}
+                >
+                  {label}
+                </a>
+              </li>
+            ))}
+            </ul>
+          </aside>
+        )}
+        {isMobile && menuOpen && <div className="drawer-backdrop" onClick={() => setMenuOpen(false)} />}
       </nav>
 
       <main className="works-grid scroll-smooth pt-14 sm:pt-20 px-4 sm:px-6">
