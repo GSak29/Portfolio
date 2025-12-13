@@ -72,14 +72,24 @@ export default function Works() {
     ],
     []
   );
+  const iconMap: Record<string, string> = {
+    home: 'bi-house',
+    about: 'bi-person',
+    skills: 'bi-stars',
+    achievements: 'bi-trophy',
+    certifications: 'bi-award',
+    projects: 'bi-kanban',
+    papers: 'bi-file-earmark-text',
+    contact: 'bi-envelope',
+  };
 
   const [activeId, setActiveId] = useState<string>('about');
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
-  const [isMobile, setIsMobile] = useState<boolean>(typeof window !== 'undefined' ? window.innerWidth < 640 : true);
+  const [isMobile, setIsMobile] = useState<boolean>(typeof window !== 'undefined' ? window.innerWidth < 1024 : true);
 
   useEffect(() => {
     const onResize = () => {
-      const mobile = window.innerWidth < 640;
+      const mobile = window.innerWidth < 1024;
       setIsMobile(mobile);
       if (!mobile) setMenuOpen(false);
     };
@@ -153,17 +163,19 @@ export default function Works() {
       </div>
       <nav className="works__nav" aria-label="Works navigation">
         <div className="works__nav-inner">
-          <a className="Btn back-home" href="/" aria-label="Back to Home">
-            <span className="svgWrapper"><i className="bi bi-house svgIcon" /></span>
-            <span className="text">Home</span>
-          </a>
           <ul
             id="works-navlinks"
             className={`works__nav-links ${menuOpen ? 'is-open' : ''}`}
             role="menubar"
-            aria-hidden={!menuOpen && window.innerWidth < 640}
+            aria-hidden={!menuOpen && window.innerWidth < 1024}
             onKeyDown={handleMenuKeyDown}
           >
+            <li role="none">
+              <a role="menuitem" className={`navlink`} href="/">
+                <i className={`bi ${iconMap.home}`} aria-hidden="true"></i>
+                <span>Home</span>
+              </a>
+            </li>
             {navItems.map(({ id, label }) => (
               <li key={id} role="none">
                 <a
@@ -175,7 +187,8 @@ export default function Works() {
                     handleNavClick(id);
                   }}
                 >
-                  {label}
+                  <i className={`bi ${iconMap[id] ?? 'bi-dot'}`} aria-hidden="true"></i>
+                  <span>{label}</span>
                 </a>
               </li>
             ))}
@@ -198,19 +211,26 @@ export default function Works() {
               </button>
             </div>
             <ul className="drawer-links" role="menubar">
-            {navItems.map(({ id, label }) => (
-              <li key={id} role="none">
-                <a
-                  role="menuitem"
-                  className={`navlink ${activeId === id ? 'active' : ''}`}
-                  href={`#${id}`}
-                  onClick={(e) => { e.preventDefault(); handleNavClick(id); }}
-                >
-                  {label}
+              <li role="none">
+                <a role="menuitem" className={`navlink`} href="/">
+                  <i className={`bi ${iconMap.home}`} aria-hidden="true"></i>
+                  <span>Home</span>
                 </a>
               </li>
-            ))}
-            </ul>
+              {navItems.map(({ id, label }) => (
+                <li key={id} role="none">
+                  <a
+                    role="menuitem"
+                    className={`navlink ${activeId === id ? 'active' : ''}`}
+                  href={`#${id}`}
+                  onClick={(e) => { e.preventDefault(); handleNavClick(id); }}
+                  >
+                  <i className={`bi ${iconMap[id] ?? 'bi-dot'}`} aria-hidden="true"></i>
+                  <span>{label}</span>
+                  </a>
+                </li>
+              ))}
+              </ul>
           </aside>
         )}
         {isMobile && menuOpen && <div className="drawer-backdrop" onClick={() => setMenuOpen(false)} />}
