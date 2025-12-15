@@ -99,6 +99,7 @@ relentlessly, and build with intent.
             <FancyButton />
           </div>
         </div>
+        
         <div className="right-section">
           <div className="organic-shape">
             <div className="portrait-placeholder">
