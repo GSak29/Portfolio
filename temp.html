@@ -1,258 +1,253 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Landing Page</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <title>TV Popup Cards</title>
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            overflow-x: hidden;
-            background: #ffffff;
-        }
+  <script src="https://cdn.tailwindcss.com"></script>
 
-        .container {
-            min-height: 100vh;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            position: relative;
-        }
+  <style>
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+    }
 
-        .left-section {
-            padding: 80px 60px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            max-width: 600px;
-            margin-left: auto;
-            padding-right: 80px;
-        }
+    .tv-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: zoomIn 0.3s ease;
+    }
 
-        .headline {
-            font-size: 56px;
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 16px;
-            color: #1a1a1a;
-            letter-spacing: -0.02em;
-        }
+    .tv-screen {
+      position: relative;
+      width: 600px;
+      height: 400px;
+      background: black;
+      border: 14px solid #333;
+      border-radius: 14px;
+      box-shadow:
+        0 0 30px rgba(0, 0, 0, 0.9),
+        inset 0 0 60px rgba(255, 255, 255, 0.2);
+      overflow: hidden;
+      padding: 16px;
+      color: white;
+    }
 
-        .subtitle {
-            font-size: 18px;
-            color: #ff9500;
-            font-weight: 600;
-            margin-bottom: 24px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
+    .static {
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        #000,
+        #000 1px,
+        #111 1px,
+        #fff 1px,
+        #333 2px
+      );
+      animation: flicker 0.12s steps(20) infinite;
+      opacity: 0.15;
+      z-index: 1;
+    }
 
-        .bio {
-            font-size: 17px;
-            line-height: 1.7;
-            color: #555;
-            margin-bottom: 40px;
-        }
+    .tv-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
 
-        .cv-button {
-            display: inline-block;
-            padding: 16px 40px;
-            background: linear-gradient(135deg, #ff9500 0%, #ff6b00 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 149, 0, 0.3);
-            align-self: flex-start;
-        }
+    .tv-image {
+      flex: 1;
+      border-radius: 8px;
+      background-size: cover;
+      background-position: center;
+      border: 2px solid #222;
+    }
 
-        .cv-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(255, 149, 0, 0.4);
-        }
+    .tv-text h2 {
+      font-size: 22px;
+      font-weight: bold;
+    }
 
-        .right-section {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
+    .tv-text p {
+      font-size: 14px;
+      opacity: 0.9;
+    }
 
-        .organic-shape {
-            width: 500px;
-            height: 500px;
-            background: linear-gradient(135deg, #ffd500 0%, #ff9500 50%, #ff6b00 100%);
-            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: morphing 8s ease-in-out infinite;
-            box-shadow: 0 20px 60px rgba(255, 149, 0, 0.3);
-        }
+    /* TV BUTTON PANEL */
+    .tv-controls {
+      display: flex;
+      gap: 16px;
+      margin-top: 14px;
+    }
 
-        @keyframes morphing {
-            0%, 100% {
-                border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-            }
-            25% {
-                border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-            }
-            50% {
-                border-radius: 30% 70% 50% 50% / 50% 60% 40% 60%;
-            }
-            75% {
-                border-radius: 70% 30% 60% 40% / 30% 60% 50% 70%;
-            }
-        }
+    .tv-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #111;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      border: 2px solid #444;
+      box-shadow: inset 0 0 6px #000;
+      transition: 0.2s;
+    }
 
-        .portrait-placeholder {
-            width: 350px;
-            height: 350px;
-            background: linear-gradient(135deg, #fff 0%, #f5f5f5 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: #999;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-        }
+    .tv-btn:hover {
+      background: #333;
+    }
 
-        .navigation-boxes {
-            position: absolute;
-            bottom: 60px;
-            left: 60px;
-            display: grid;
-            grid-template-columns: repeat(2, 140px);
-            grid-template-rows: repeat(2, 140px);
-            gap: 20px;
-        }
+    .power-btn {
+      color: red;
+      border-color: red;
+      box-shadow: 0 0 10px red;
+    }
 
-        .nav-box {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            color: #666;
-            position: relative;
-            overflow: hidden;
-        }
+    @keyframes flicker {
+      0% { opacity: 0.12; }
+      50% { opacity: 0.2; }
+      100% { opacity: 0.12; }
+    }
 
-        .nav-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-        }
-
-        .nav-box:first-child {
-            grid-column: 1;
-            grid-row: 1;
-        }
-
-        .nav-box:nth-child(2) {
-            grid-column: 2;
-            grid-row: 2;
-        }
-
-        .nav-box:nth-child(3) {
-            grid-column: 1;
-            grid-row: 2;
-        }
-
-        .nav-label {
-            position: absolute;
-            bottom: 15px;
-            font-size: 14px;
-            font-weight: 600;
-            color: #333;
-        }
-
-        .nav-placeholder {
-            font-size: 48px;
-            color: #e0e0e0;
-        }
-
-        @media (max-width: 1024px) {
-            .container {
-                grid-template-columns: 1fr;
-                grid-template-rows: auto auto;
-            }
-
-            .left-section {
-                max-width: 100%;
-                padding: 60px 40px 40px;
-                margin: 0;
-            }
-
-            .right-section {
-                padding: 40px;
-            }
-
-            .organic-shape {
-                width: 400px;
-                height: 400px;
-            }
-
-            .portrait-placeholder {
-                width: 280px;
-                height: 280px;
-            }
-
-            .navigation-boxes {
-                position: relative;
-                left: auto;
-                bottom: auto;
-                margin: 40px auto;
-                justify-content: center;
-            }
-        }
-    </style>
+    @keyframes zoomIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+  </style>
 </head>
-<body>
-    <div class="container">
-        <div class="left-section">
-            <div class="subtitle">Full-Stack Developer</div>
-            <h1 class="headline">Hello, my name is Alex Johnson</h1>
-            <p class="bio">
-                I'm a passionate developer and designer with 5+ years of experience creating beautiful, functional digital experiences. I specialize in crafting intuitive user interfaces and building scalable web applications that solve real-world problems.
-            </p>
-            <a href="#" class="cv-button">Download CV</a>
-        </div>
 
-        <div class="right-section">
-            <div class="organic-shape">
-                <div class="portrait-placeholder">
-                    Portrait
-                </div>
-            </div>
-        </div>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
 
-        <div class="navigation-boxes">
-            <div class="nav-box">
-                <span class="nav-placeholder">📁</span>
-                <span class="nav-label">Projects</span>
-            </div>
-            <div class="nav-box">
-                <span class="nav-placeholder">👤</span>
-                <span class="nav-label">About</span>
-            </div>
-            <div class="nav-box">
-                <span class="nav-placeholder">✉️</span>
-                <span class="nav-label">Contact</span>
-            </div>
-        </div>
+  <!-- CARD GRID (UNCHANGED) -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 p-10">
+
+    <div class="relative flex w-80 flex-col rounded-xl bg-white shadow-md">
+      <div class="mx-4 -mt-6 h-40 rounded-xl bg-gradient-to-r from-blue-500 to-blue-600"></div>
+      <div class="p-6">
+        <h5 class="text-xl font-semibold">Card One</h5>
+        <p class="text-sm mt-2">This opens a TV-style popup.</p>
+      </div>
+      <div class="p-6 pt-0">
+        <button onclick="openTV(0)"
+          class="rounded-lg bg-blue-500 py-3 px-6 text-xs font-bold uppercase text-white">
+          Read More
+        </button>
+      </div>
     </div>
+
+    <div class="relative flex w-80 flex-col rounded-xl bg-white shadow-md">
+      <div class="mx-4 -mt-6 h-40 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500"></div>
+      <div class="p-6">
+        <h5 class="text-xl font-semibold">Card Two</h5>
+        <p class="text-sm mt-2">Same TV popup reused.</p>
+      </div>
+      <div class="p-6 pt-0">
+        <button onclick="openTV(1)"
+          class="rounded-lg bg-purple-500 py-3 px-6 text-xs font-bold uppercase text-white">
+          Read More
+        </button>
+      </div>
+    </div>
+
+    <div class="relative flex w-80 flex-col rounded-xl bg-white shadow-md">
+      <div class="mx-4 -mt-6 h-40 rounded-xl bg-gradient-to-r from-green-500 to-emerald-500"></div>
+      <div class="p-6">
+        <h5 class="text-xl font-semibold">Card Three</h5>
+        <p class="text-sm mt-2">TV popup with power off.</p>
+      </div>
+      <div class="p-6 pt-0">
+        <button onclick="openTV(2)"
+          class="rounded-lg bg-green-500 py-3 px-6 text-xs font-bold uppercase text-white">
+          Read More
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- TV POPUP -->
+  <div id="tvOverlay" class="overlay">
+    <div class="tv-container">
+
+      <div class="tv-screen">
+        <div class="static"></div>
+
+        <div class="tv-content">
+          <div id="tvImage" class="tv-image"></div>
+          <div class="tv-text">
+            <h2 id="tvTitle"></h2>
+            <p id="tvDesc"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- TV BUTTONS -->
+      <div class="tv-controls">
+        <button class="tv-btn" onclick="prev()">⏮</button>
+        <button class="tv-btn power-btn" onclick="closeTV()">⏻</button>
+        <button class="tv-btn" onclick="next()">⏭</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const data = [
+      {
+        title: "Card One",
+        desc: "This is content from card one displayed on the TV.",
+        image: "https://picsum.photos/600/300?random=11"
+      },
+      {
+        title: "Card Two",
+        desc: "This is content from card two displayed on the TV.",
+        image: "https://picsum.photos/600/300?random=12"
+      },
+      {
+        title: "Card Three",
+        desc: "This is content from card three displayed on the TV.",
+        image: "https://picsum.photos/600/300?random=13"
+      }
+    ];
+
+    let index = 0;
+
+    function openTV(i) {
+      index = i;
+      updateTV();
+      document.getElementById("tvOverlay").style.display = "flex";
+    }
+
+    function closeTV() {
+      document.getElementById("tvOverlay").style.display = "none";
+    }
+
+    function next() {
+      index = (index + 1) % data.length;
+      updateTV();
+    }
+
+    function prev() {
+      index = (index - 1 + data.length) % data.length;
+      updateTV();
+    }
+
+    function updateTV() {
+      document.getElementById("tvTitle").innerText = data[index].title;
+      document.getElementById("tvDesc").innerText = data[index].desc;
+      document.getElementById("tvImage").style.backgroundImage =
+        `url(${data[index].image})`;
+    }
+  </script>
+
 </body>
 </html>
