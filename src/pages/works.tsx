@@ -5,7 +5,6 @@ import Skills from './sections/Skills';
 import Achievements from './sections/Achievements';
 import Certifications from './sections/Certifications';
 import Projects from './sections/Projects';
-import Papers from './sections/Papers';
 import Contact from './sections/Contact';
 
 type NavItem = { id: string; label: string };
@@ -67,7 +66,6 @@ export default function Works() {
       { id: 'achievements', label: 'Achievements' },
       { id: 'certifications', label: 'Certifications' },
       { id: 'projects', label: 'Projects' },
-      { id: 'papers', label: 'Papers' },
       { id: 'contact', label: 'Contact' },
     ],
     []
@@ -79,7 +77,6 @@ export default function Works() {
     achievements: 'bi-trophy',
     certifications: 'bi-award',
     projects: 'bi-kanban',
-    papers: 'bi-file-earmark-text',
     contact: 'bi-envelope',
   };
 
@@ -267,14 +264,6 @@ export default function Works() {
         >
           <div className="card-wrapper">
             <Projects />
-          </div>
-        </section>
-        <section
-          className="works__cell section-wrapper"
-          aria-label="Papers"
-        >
-          <div className="card-wrapper">
-            <Papers />
           </div>
         </section>
         <section
