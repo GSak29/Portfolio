@@ -1,4 +1,6 @@
 import "./App.css";
+import './index.css';
+
 import "./components/fancybutton.css";
 import FancyButton from "./components/fancybutton";
 import { useEffect, useRef, useState } from "react";
@@ -99,7 +101,7 @@ relentlessly, and build with intent.
             <FancyButton />
           </div>
         </div>
-        
+      
         <div className="right-section">
           <div className="organic-shape">
             <div className="portrait-placeholder">
