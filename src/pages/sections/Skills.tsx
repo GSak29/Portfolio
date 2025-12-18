@@ -38,45 +38,49 @@ export default function Skills() {
     'Communication',
   ]
   return (
-    <div id="skills" className="section skills-frame">
-      <div className="skills-stack">
-        <div className="section-header section-header--center">
-          <h2 className="section-title">What I Build</h2>
-          <p className="section-desc">Compact overview of core capabilities.</p>
-        </div>
-        <div className="skills-grid skills-grid--tech" aria-label="Technical skills">
-          {techCards.map(({ title, subs }) => (
-            <div key={title} className="skill-card" tabIndex={0}>
-              <img className="skill-icon" src={icon(title)} alt={`${title} icon`} />
-              <div className="skill-label">{title}</div>
-              <div className="skill-subs" aria-label={`${title} sub-skills`}>
-                {subs.map((s) => (
-                  <span key={s} className="skill-chip">{s}</span>
-                ))}
+    <>
+      <div className="skills-intro">
+        <h1 className="intro-title">Knowledge With Experience</h1>
+      </div>
+      <div id="skills" className="section skills-frame">
+        <div className="skills-stack">
+          <div className="section-header section-header--center">
+            <h2 className="section-title">What I Build</h2>
+            <p className="section-desc">Compact overview of core capabilities.</p>
+          </div>
+          <div className="skills-grid skills-grid--tech" aria-label="Technical skills">
+            {techCards.map(({ title, subs }) => (
+              <div key={title} className="skill-card" tabIndex={0}>
+                <img className="skill-icon" src={icon(title)} alt={`${title} icon`} />
+                <div className="skill-label">{title}</div>
+                <div className="skill-subs" aria-label={`${title} sub-skills`}>
+                  {subs.map((s) => (
+                    <span key={s} className="skill-chip">{s}</span>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+        </div>
+        <div className="skills-stack">
+          <div className="section-header section-header--center">
+            <h2 className="section-title">How I Work</h2>
+            <p className="section-desc">Minimalist view of key soft skills.</p>
+          </div>
+          <div className="skills-grid skills-grid--soft" aria-label="Soft skills">
+            {soft.map((name) => (
+              <div key={name} className="skill-card" tabIndex={0}>
+                <img
+                  className="skill-icon"
+                  src={softIcon(name)}
+                  alt={`${name} icon`}
+                />
+                <div className="skill-label">{name}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-      <div className="skills-stack">
-        <div className="section-header section-header--center">
-          <h2 className="section-title">How I Work</h2>
-          <p className="section-desc">Minimalist view of key soft skills.</p>
-        </div>
-        <div className="skills-grid skills-grid--soft" aria-label="Soft skills">
-          {soft.map((name) => (
-            <div key={name} className="skill-card" tabIndex={0}>
-              <img
-                className="skill-icon"
-                src={softIcon(name)}
-                alt={`${name} icon`}
-                style={{ width: 40, height: 40 }}
-              />
-              <div className="skill-label" style={{ fontSize: 14 }}>{name}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
+    </>
   )
 }
