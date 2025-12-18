@@ -28,11 +28,5 @@ export const achievements: Achievement[] = [
     image: "src/assets/achievement/ebox.jpeg", // Placeholder path
     link: "#"
   },
-  {
-    id: 4,
-    title: "E-Box Gold Medalist",
-    description: "Achieved Gold E-Box comprehensive skill development program for consistent performance in full-stack assessments.",
-    image: "src/assets/achievement/ebox.jpeg", // Placeholder path
-    link: "#"
-  }
+ 
 ];
