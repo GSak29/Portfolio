@@ -20,7 +20,7 @@ export default function Certifications() {
             className="relative w-80 overflow-visible rounded-xl bg-white shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
           >
             {/* Image Section */}
-            <div className="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl shadow-lg">
+            <div className="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl shadow-xl">
               <img
                 src={item.image}
                 alt={item.title}
