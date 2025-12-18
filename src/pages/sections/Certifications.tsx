@@ -3,22 +3,31 @@ export default function Certifications() {
     <div id="certifications" className="section">
       <div className="section-header">
         <h2 className="section-title">Certifications</h2>
-        <p className="section-desc">Credentials validating knowledge and practice.</p>
+        <p className="section-desc">
+          Credentials validating knowledge and practice.
+        </p>
       </div>
-      <ul className="cert-list" role="list">
-        <li className="cert-item">
-          <div className="cert-title">AWS Certified Cloud Practitioner</div>
-          <div className="cert-meta">Amazon Web Services</div>
-        </li>
-        <li className="cert-item">
-          <div className="cert-title">Professional Scrum Master I</div>
-          <div className="cert-meta">Scrum.org</div>
-        </li>
-        <li className="cert-item">
-          <div className="cert-title">Embedded Systems Specialization</div>
-          <div className="cert-meta">Coursera</div>
-        </li>
-      </ul>
+      <div className="relative flex w-80 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
+        <div className="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40 bg-gradient-to-r from-blue-500 to-blue-600"></div>
+        <div className="p-6">
+          <h5 className="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
+            Tailwind card
+          </h5>
+          <p className="block font-sans text-base font-light leading-relaxed text-inherit antialiased">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc felis
+            ligula.
+          </p>
+        </div>
+        <div className="p-6 pt-0">
+          <button
+            data-ripple-light="true"
+            type="button"
+            className="select-none rounded-lg bg-blue-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+          >
+            Read More
+          </button>
+        </div>
+      </div>
     </div>
-  )
+  );
 }
