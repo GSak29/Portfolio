@@ -54,7 +54,7 @@ export default function FancyButton() {
               <p className="details-body">Explore My Skills, projects, achievements, certifications, and ideas presented in a fast, responsive layout.</p>
               <div className="details-actions">
                 <button className="btn primary" onClick={() => { setShowPopup(false); navigate('/works'); }}>Explore</button>
-                <button className="btn ghost" onClick={() => { setShowPopup(false); }}>Back</button>
+                <button className="btn ghost" style={{ marginLeft: '0.75rem' }} onClick={() => { setShowPopup(false); }}>Back</button>
               </div>
             </div>
         </div>

@@ -1058,19 +1058,67 @@ color: #fff0f0;
 
 /* details view */
 .popup-content.details {
+  width: 90vw;
   max-width: 520px;
   padding: 24px 24px;
-  background: rgba(255,255,255,0.9);
+  background: #ffffff;
   border-radius: 18px;
   box-shadow: 0 16px 40px rgba(0,0,0,0.12);
   display: flex;
   flex-direction: column;
   gap: 16px;
   align-items: center;
+  position: relative;
+  z-index: 10002;
 }
 
 .details-header { display: flex; align-items: center; gap: 12px; }
 .details-title { margin: 0; font-size: 20px; font-weight: 800; color: #1a1a1a; }
 .details-body { margin: 0; color: #666; font-size: 14px; text-align: center; }
 .details-actions { display: flex; gap: 12px; }
+
+/* Button Styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  outline: none;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, #ff8c1a, #ffb347);
+  color: white;
+  box-shadow: 0 4px 12px rgba(255, 140, 26, 0.3);
+}
+
+.btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 140, 26, 0.4);
+  filter: brightness(1.05);
+}
+
+.btn.primary:active {
+  transform: translateY(0);
+}
+
+.btn.ghost {
+  background: transparent;
+  color: #666;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.btn.ghost:hover {
+  background: rgba(0,0,0,0.03);
+  color: #1a1a1a;
+  border-color: rgba(0,0,0,0.2);
+}
 
