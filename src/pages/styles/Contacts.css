@@ -1,0 +1,258 @@
+/* ===== GLOBAL ===== */
+:root {
+  --contact-accent: var(--site-accent, #ff9500);
+  --contact-bg: var(--site-bg, #ffffff);
+  --contact-fg: var(--site-fg, #1a1a1a);
+  --card-dim-bg: #151515;
+  /* Fallback dark for card front */
+}
+
+/* ===== LAYOUT ===== */
+.contact-card-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .contact-card-wrapper {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+}
+
+.text-accent {
+  color: var(--contact-accent);
+}
+
+/* ===== GRID ===== */
+.contact-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+
+  /* Keep 2 columns on mobile as requested "2x1" */
+  .contact-card-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+/* ===== FLIP CARD ===== */
+.contact-card {
+  perspective: 1000px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  /* Square */
+}
+
+.contact-card-wide {
+  grid-column: span 2;
+  aspect-ratio: 2 / 1;
+  /* Wide rectangle */
+}
+
+.contact-card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.contact-card.is-flipped .contact-card-inner {
+  transform: rotateY(180deg);
+}
+
+.contact-card-front,
+.contact-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* FRONT */
+.contact-card-front {
+  background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.contact-card-front h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--contact-accent);
+}
+
+.contact-card-front p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+/* BACK */
+.contact-card-back {
+  background: linear-gradient(135deg, #222, #111);
+  transform: rotateY(180deg);
+  border: 1px solid var(--contact-accent);
+}
+
+.contact-card-back img {
+  width: 60%;
+  height: auto;
+  max-height: 70%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* FLIP BUTTON */
+.card-flip-btn {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--contact-accent);
+  transition: background 0.2s, transform 0.2s;
+  z-index: 10;
+}
+
+.card-flip-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.card-flip-btn i {
+  font-size: 14px;
+}
+
+/* ===== FORM ===== */
+.contact-card-form-container {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 32px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  /* Synchronized design */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.contact-card-heading {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 24px;
+  display: block;
+  color: var(--contact-fg);
+}
+
+/* Use white text if on dark background, or inverse based on theme context. 
+   Assuming dark theme based on previous CSS. */
+@media (prefers-color-scheme: light) {
+  .contact-card-heading {
+    color: #1a1a1a;
+  }
+}
+
+/* Force text color for light theme visibility */
+.contact-card-heading {
+  color: #000;
+  display: flex;
+  /* alignment if needed */
+  gap: 8px;
+  /* space between words if flexed, but it's inline span */
+}
+
+.contact-card-input,
+.contact-card-textarea {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  background: rgba(0, 0, 0, 0.05);
+  /* Light grey specific for light bg */
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  outline: none;
+  color: #1a1a1a;
+  /* Dark text for visibility */
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.contact-card-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact-card-input:focus,
+.contact-card-textarea:focus {
+  border-color: var(--contact-accent);
+  background: rgba(0, 0, 0, 0.08);
+}
+
+/* ===== BUTTONS ===== */
+.contact-card-button-group {
+  display: flex;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.contact-card-send {
+  flex: 2;
+  background: var(--contact-accent);
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  font-weight: 800;
+  color: white;
+  /* Contrast text */
+  cursor: pointer;
+  transition: filter 0.2s, transform 0.2s;
+  font-size: 1rem;
+}
+
+.contact-card-send:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+}
+
+.contact-card-reset {
+  flex: 1;
+  background: transparent;
+  border: 2px solid var(--contact-accent);
+  padding: 14px;
+  border-radius: 12px;
+  color: var(--contact-accent);
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-size: 1rem;
+}
+
+.contact-card-reset:hover {
+  background: rgba(255, 149, 0, 0.1);
+}

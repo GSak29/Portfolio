@@ -24,7 +24,7 @@ export default function About() {
             <div className="edu-card">
               <img className="edu-thumb" src="src/assets/ehkn.png" alt="Competitions" />
               <div className="edu-title">Erode Hindu Kalvi Nilayam <br/> Primary & Nursery School</div>
-               <div className="edu-desc">Why not to mention, this is the place <br/>where they put foundation for building myself</div>
+               <div className="edu-desc">Why not to mention..!!, this is the place <br/>where they put foundation for building myself</div>
               <a className="edu-link" href="https://www.ehkn.edu.in/" aria-label="Explore Competitions">Explore <i className="bi bi-box-arrow-up-right"></i></a>
             </div>
           </div>
