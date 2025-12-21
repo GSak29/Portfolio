@@ -39,10 +39,10 @@ export default function Skills() {
   ]
   return (
     <>
-      <div className="skills-intro">
-        <h1 className="intro-title">Knowledge With Experience</h1>
+      <div id="skills" className="skills-intro">
+        <h5 className="intro-title">Knowledge<span className="text-amber-600"> + </span>Experience<span className="text-amber-600"> == </span>Skills</h5>
       </div>
-      <div id="skills" className="section skills-frame">
+      <div className="section skills-frame">
         <div className="skills-stack">
           <div className="section-header section-header--center">
             <h2 className="section-title">What I Build</h2>
