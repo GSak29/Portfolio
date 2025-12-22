@@ -65,12 +65,12 @@ export default function Contact() {
             <FlipCard
               title="LinkedIn"
               subtitle="Connect with me"
-              backContent={<img src="qr-linkedin.png" alt="LinkedIn QR" />}
+              backContent={<img src="src/assets/Linked In.png" alt="LinkedIn QR" />}
             />
             <FlipCard
               title="GitHub"
               subtitle="View Projects"
-              backContent={<img src="qr-github.png" alt="GitHub QR" />}
+              backContent={<img src="src/assets/GitHub.png" alt="GitHub QR" />}
             />
             <FlipCard
               title="Email"

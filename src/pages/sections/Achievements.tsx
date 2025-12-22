@@ -17,7 +17,7 @@ export default function Achievements() {
                 <h3 className="achievement-title">{item.title}</h3>
                 <p className="achievement-desc">{item.description}</p>
               </div>
-              <a href={item.link || '#'} className="achievement-btn">
+              <a href={item.link || '#'} target="_blank"className="achievement-btn">
                 Explore
               </a>
             </div>

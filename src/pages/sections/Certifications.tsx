@@ -20,7 +20,7 @@ export default function Certifications() {
             className="relative w-80 overflow-visible rounded-xl bg-white shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
           >
             {/* Image Section */}
-            <div className="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl shadow-xl">
+            <div className="relative mx-4 -mt-6 h-50 overflow-hidden rounded-xl shadow-xl">
               <img
                 src={item.image}
                 alt={item.title}
@@ -41,9 +41,9 @@ export default function Certifications() {
 
             {/* Button */}
             <div className="p-6 pt-0">
-              <button className="rounded-lg bg-gray-900 px-6 py-3 text-xs font-bold uppercase text-white transition hover:bg-gray-800">
-                View Certificate
-              </button>
+              <a href ={item.link} target="_blank" className="rounded-lg bg-gray-900 px-6 py-3 text-xs font-bold uppercase text-white transition hover:bg-gray-800">
+                 View Certificate
+              </a>
             </div>
           </div>
         ))}

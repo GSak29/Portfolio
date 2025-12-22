@@ -1,23 +1,29 @@
 export const certifications = [
   {
     id: 1,
-    title: "Tailwind CSS",
-    description: "Certified in building modern, responsive UIs using Tailwind CSS.",
+    title: "Java Oracle - Foundation Associate",
+    description: "Oracle-Verified Java Skills",
     image:
-      "https://images.unsplash.com/photo-1555066931-4365d14bab8c",
+    "src/assets/Certifications/java.jpeg",
+    link:
+     "https://www.linkedin.com/posts/gsak2985_oraclecertified-javaprogramming-dsa-activity-7404206720505249792-Iycp?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAFGjDlkBT6uDA4DJQGDOfJHK4eE-pdsyurQ"
   },
   {
     id: 2,
-    title: "React Development",
-    description: "Hands-on certification in developing scalable React applications.",
+    title: "Linux Os",
+    description: "Introduction To Linux",
     image:
-      "https://images.unsplash.com/photo-1633356122544-f134324a6cee",
+    "src/assets/Certifications/Linux.jpeg",
+    link:
+    "https://www.linkedin.com/posts/gsak2985_linux-thelinuxfoundation-opensource-activity-7390274245827796992-CKXP?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFGjDlkBT6uDA4DJQGDOfJHK4eE-pdsyurQ"
   },
   {
     id: 3,
-    title: "Data Structures",
-    description: "Strong problem-solving and algorithmic foundations.",
+    title: "Rashberry Pi-4",
+    description: "Trained & Got Hands-On Experience On Rashberry Pi-4",
     image:
-      "https://images.unsplash.com/photo-1509228468518-180dd4864904",
+    "src/assets/Certifications/Rashberry Pi.jpeg",
+    link:
+    "https://www.linkedin.com/feed/update/urn:li:activity:7229523034531930116?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7229523034531930116%2C7292934949437882370%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287292934949437882370%2Curn%3Ali%3Aactivity%3A7229523034531930116%29"
   },
 ];

@@ -1,38 +1,38 @@
 export const projects = [
   {
     id: 1,
-    title: "Portfolio Website",
+    title: "Indian Sign Language Translator",
     description:
-      "Personal portfolio built using React and Tailwind CSS showcasing projects and skills.",
-    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97",
-    previewLink: "#",
-    codeLink: "#",
+      "Built a Bi-directional Webapp for Indian Sign Language Translator Voice2Sign & Sign2Voice",
+    image: "src/assets/projects/isl.png",
+    previewLink: "https://www.linkedin.com/posts/gsak2985_isltranslator-aibytsindia-hackathon2025-activity-7320836428765048832-4C-T?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFGjDlkBT6uDA4DJQGDOfJHK4eE-pdsyurQ",
+    codeLink: "https://github.com/GSak29/BYTS_1.0.git",
   },
   {
     id: 2,
-    title: "Todo App",
+    title: "Digital Dice",
     description:
-      "A simple and efficient todo application with CRUD operations and clean UI.",
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c",
-    previewLink: "#",
-    codeLink: "#",
+      "Constructed a Digital Dice Using Basic Gates IC: And_OR_Not",
+    image: "src/assets/projects/die.png",
+    previewLink: "https://www.linkedin.com/posts/gsak2985_digitaldice-logicgates-electronics-activity-7266484638947196928-r1dc?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFGjDlkBT6uDA4DJQGDOfJHK4eE-pdsyurQ",
+    codeLink: "https://github.com/GSak29/Digital-Dice.git",
   },
   {
     id: 3,
-    title: "DSA Visualizer",
+    title: "Activated Carbon Air Purifier",
     description:
-      "Interactive tool to visualize data structures and algorithms step-by-step.",
-    image: "https://images.unsplash.com/photo-1509228468518-180dd4864904",
-    previewLink: "#",
-    codeLink: "#",
+      "Developed a window-mountable air purifier for highly polluted urban environments.",
+    image: "src/assets/projects/air.png",
+    previewLink: "https://www.linkedin.com/posts/gsak2985_innovation-sustainability-airpurification-activity-7292923867356880896-ydwh?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAFGjDlkBT6uDA4DJQGDOfJHK4eE-pdsyurQ",
+    codeLink: "https://github.com/GSak29/Air_Purifier.git",
   },
   {
     id: 4,
-    title: "DSA Visualizer",
+    title: "GenRec",
     description:
-      "Interactive tool to visualize data structures and algorithms step-by-step.",
-    image: "https://images.unsplash.com/photo-1509228468518-180dd4864904",
-    previewLink: "#",
-    codeLink: "#",
+      "Built an IoT-powered smart waste segregation system with ML and a real-time Flutter app to visualize and manage municipal waste data.",
+    image: "src/assets/projects/bin.png",
+    previewLink: "https://www.linkedin.com/posts/gsak2985_innovation-iot-smartwastemanagement-activity-7389291765893177344-qIBC?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFGjDlkBT6uDA4DJQGDOfJHK4eE-pdsyurQ",
+    codeLink: "https://github.com/GSak29/Genrec.git",
   },
 ];

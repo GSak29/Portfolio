@@ -12,20 +12,20 @@ export default function About() {
               <div className="edu-title">Kongu Engineering College </div>
               <div className="edu-desc">B.E in Electronics and Communication Engineering </div>
               <div className="edu-desc">CGPA :: 9.04 </div>
-              <a className="edu-link" href="https://kongu.ac.in/" aria-label="Explore High School">Explore <i className="bi bi-box-arrow-up-right"></i></a>
+              <a className="edu-link" target="_blank" href="https://kongu.ac.in/" aria-label="Explore High School">Explore <i className="bi bi-box-arrow-up-right"></i></a>
             </div>
             <div className="edu-card">
               <img className="edu-thumb" src="src/assets/bvb.png" alt="STEM Clubs" />
               <div className="edu-title">Bharathi Vidhya Bhavan Hr.sec School</div>
               <div className="edu-desc">Completed my Higher Studies Securing</div>
               <div className="edu-desc">12th Grade : 85.33% & 11th Grade : 92%</div>
-              <a className="edu-link" href="https://thebvb.com/home-bvb-matric-hr-sec-school/" aria-label="Explore STEM Clubs">Explore <i className="bi bi-box-arrow-up-right"></i></a>
+              <a className="edu-link" href="https://thebvb.com/home-bvb-matric-hr-sec-school/" target="_blank" aria-label="Explore STEM Clubs">Explore <i className="bi bi-box-arrow-up-right"></i></a>
             </div>
             <div className="edu-card">
               <img className="edu-thumb" src="src/assets/ehkn.png" alt="Competitions" />
               <div className="edu-title">Erode Hindu Kalvi Nilayam <br/> Primary & Nursery School</div>
                <div className="edu-desc">Why not to mention..!!, this is the place <br/>where they put foundation for building myself</div>
-              <a className="edu-link" href="https://www.ehkn.edu.in/" aria-label="Explore Competitions">Explore <i className="bi bi-box-arrow-up-right"></i></a>
+              <a className="edu-link" href="https://www.ehkn.edu.in/" target="_blank" aria-label="Explore Competitions">Explore <i className="bi bi-box-arrow-up-right"></i></a>
             </div>
           </div>
         </div>
@@ -35,8 +35,8 @@ export default function About() {
             <div className="skills-title">Narrative</div>
             <div className="about-paras">
               <p>I work at the intersection of hardware and software, focusing on dependable systems with clear, maintainable code.</p>
-              <p>My projects range from MCU firmware and tooling to frontend applications with smooth, responsive interfaces.</p>
-              <p>I value practical design, predictable performance, and shipping products that feel refined without unnecessary complexity.</p>
+              <p>Building cool things that actually work — from embedded systems to sleek web apps</p>
+              <p>I love turning ideas into clean, functional tech that feels modern and effortless.</p>
             </div>
           </div>
         </div>

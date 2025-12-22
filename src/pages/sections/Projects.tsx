@@ -32,14 +32,14 @@ export default function Projects() {
               <div className="card__links">
                 <div>
                 <i className="bi bi-link-45deg"></i>
-                  <a className="link" href={project.previewLink}>
-                    Preview
+                  <a className="link" target="_blank" href={project.previewLink}>
+                    Know More
                   </a>
                 </div>
 
                 <div>
                   <i className="bi bi-github"></i>
-                  <a className="link" href={project.codeLink}>
+                  <a className="link"  target="_blank" href={project.codeLink}>
                     Code
                   </a>
                 </div>
