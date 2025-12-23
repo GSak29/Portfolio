@@ -136,6 +136,68 @@
   font-weight: 800;
 }
 
+/* Specific Card Styles */
+.card-linkedin .contact-card-front {
+  background: linear-gradient(135deg, #0288d1 0%, #01579b 100%);
+  /* Lighter, Vibrant Blue */
+  color: #ffffff;
+  border: none;
+}
+
+.card-linkedin .contact-card-front h3 {
+  color: #ffffff;
+}
+
+.card-github .contact-card-front {
+  background: linear-gradient(135deg, #2b3137 0%, #1a1e22 100%);
+  /* Professional Dark Gradient */
+  color: #ffffff;
+  border: 1px solid #30363d;
+}
+
+.card-github .contact-card-front h3 {
+  color: #ffffff;
+}
+
+.card-email .contact-card-front {
+  background: linear-gradient(135deg, #8E2DE2 0%, #4A00E0 100%);
+  /* Vibrant Purple */
+  color: #ffffff;
+  border: none;
+}
+
+.card-email .contact-card-front .email-address {
+  color: #ffffff;
+}
+
+.card-description-front {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 5px;
+  font-weight: 500;
+}
+
+.card-description-back {
+  font-size: 0.9rem;
+  color: #333;
+  margin-top: 8px;
+  font-weight: 600;
+}
+
+/* Improve flip button visibility on dark backgrounds */
+.card-linkedin .contact-card-front .card-flip-btn,
+.card-github .contact-card-front .card-flip-btn,
+.card-email .contact-card-front .card-flip-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.card-linkedin .contact-card-front .card-flip-btn:hover,
+.card-github .contact-card-front .card-flip-btn:hover,
+.card-email .contact-card-front .card-flip-btn:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
 /* Email Card Specific Content */
 .email-card-content {
   display: flex;

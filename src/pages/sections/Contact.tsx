@@ -1,6 +1,7 @@
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import "../styles/Contacts.css";
+import { contactData } from "../data/contact";
 
 interface FlipCardProps {
   title: string;
@@ -8,13 +9,15 @@ interface FlipCardProps {
   backContent: React.ReactNode;
   isWide?: boolean;
   targetUrl?: string;
+  className?: string;
+  description?: string;
 }
 
-const FlipCard = ({ title, frontImage, backContent, isWide = false, targetUrl }: FlipCardProps) => {
+const FlipCard = ({ title, frontImage, backContent, isWide = false, targetUrl, className = "", description }: FlipCardProps) => {
   const [flipped, setFlipped] = useState(false);
 
   return (
-    <div className={`contact-card ${isWide ? "contact-card-wide" : ""} ${flipped ? "is-flipped" : ""}`}>
+    <div className={`contact-card ${isWide ? "contact-card-wide" : ""} ${flipped ? "is-flipped" : ""} ${className}`}>
       <div className="contact-card-inner">
         <div className="contact-card-front">
           <div className="card-content">
@@ -28,7 +31,7 @@ const FlipCard = ({ title, frontImage, backContent, isWide = false, targetUrl }:
               )
             )}
             <h3>{title}</h3>
-            {/* Subtitle and Description removed from front as requested by user ("only the image the name linked in") */}
+            {description && <p className="card-description-front">{description}</p>}
           </div>
           <button className="card-flip-btn" onClick={() => setFlipped(true)} aria-label="Flip Card">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -153,24 +156,30 @@ export default function Contact() {
               frontImage="src/assets/in.png"
               targetUrl="https://www.linkedin.com/in/gsak2985"
               backContent={<img src="src/assets/Linked In.png" alt="LinkedIn QR" />}
+              className="card-linkedin"
             />
             <FlipCard
               title="GitHub"
               frontImage="src/assets/git.png"
               targetUrl="https://github.com/GSak29"
               backContent={<img src="src/assets/GitHub.png" alt="GitHub QR" />}
+              className="card-github"
             />
             <FlipCard
-              title="Email"
+              title={contactData.frontTitle}
+              frontImage="src/assets/email.png"
+              targetUrl={`mailto:${contactData.mailtoEmail}`}
+              description={contactData.frontDescription}
               backContent={
                 <div className="email-card-content">
-                  <span className="email-address">deeplearningextra@gmail.com</span>
+                  <span className="email-address">{contactData.email}</span>
+                  <p className="card-description-back">{contactData.backDescription}</p>
                 </div>
               }
               isWide={true}
+              className="card-email"
             />
           </div>
-
         </section>
       </div>
     </>
