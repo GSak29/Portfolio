@@ -89,37 +89,104 @@
 }
 
 /* FRONT */
+/* FRONT */
 .contact-card-front {
-  background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: white;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  color: #1a1a1a;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+  backdrop-filter: none;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  width: 100%;
+}
+
+@keyframes float-pulse {
+
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-8px) scale(1.05);
+  }
+}
+
+.card-front-image {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  margin-bottom: 8px;
+  animation: float-pulse 3s ease-in-out infinite;
+  /* Combined float and pulse */
+  filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.15));
 }
 
 .contact-card-front h3 {
   margin: 0;
-  font-size: 1.25rem;
-  color: var(--contact-accent);
+  font-size: 1.5rem;
+  color: #000;
+  font-weight: 800;
 }
 
-.contact-card-front p {
+/* Email Card Specific Content */
+.email-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+}
+
+.email-address {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--contact-accent);
+  word-break: break-all;
+  text-align: center;
+}
+
+.card-subtitle {
   margin: 0;
-  font-size: 0.9rem;
-  color: #aaa;
+  font-size: 1rem;
+  color: #555;
+  font-weight: 600;
+}
+
+.card-description {
+  margin-top: 4px;
+  font-size: 0.85rem;
+  color: #666;
+  line-height: 1.5;
+  max-width: 90%;
 }
 
 /* BACK */
 .contact-card-back {
-  background: linear-gradient(135deg, #222, #111);
+  background: #fff;
   transform: rotateY(180deg);
-  border: 1px solid var(--contact-accent);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0;
+  /* Full bleed */
+  overflow: hidden;
+  /* rounded corners clip image */
 }
 
 .contact-card-back img {
-  width: 60%;
-  height: auto;
-  max-height: 70%;
-  object-fit: contain;
-  border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
 }
 
 /* FLIP BUTTON */
@@ -127,7 +194,8 @@
   position: absolute;
   bottom: 12px;
   right: 12px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.05);
+  /* slightly visible on white */
   border: none;
   border-radius: 50%;
   width: 32px;
@@ -142,7 +210,7 @@
 }
 
 .card-flip-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.1);
   transform: scale(1.1);
 }
 
