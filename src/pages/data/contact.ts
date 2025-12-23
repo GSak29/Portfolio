@@ -1,7 +1,12 @@
+
 export const contactData = {
-    email: "deeplearningextra@gmail.com",
+    phone: "Phone Number: 6374425918",
     mailtoEmail: "gurusakthis.29aug05@gmail.com",
     frontTitle: "Email",
     frontDescription: "Drop me a line",
-    backDescription: "Contact for collaborations!", // You can update this text
+    backDescription: "Contact for collaborations!",
+    codingProfiles: [
+        { name: "LeetCode", url: "https://leetcode.com/u/Guru-Sakthi/", icon: "src/assets/leetcode.png" }, // Add your ID
+        { name: "Codeforces", url: "https://codeforces.com/profile/gurusakthis.23ece", icon: "src/assets/codeforces.png" } // Add your ID
+    ]
 };

@@ -184,6 +184,65 @@
   font-weight: 600;
 }
 
+.coding-profiles {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 15px;
+  width: 100%;
+  padding: 0 10px;
+  /* Add some padding inside the card */
+}
+
+.profile-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding-bottom: 4px;
+}
+
+/* Icons */
+.contact-icon {
+  margin-right: 10px;
+  font-size: 1.1rem;
+  color: var(--contact-accent);
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.profile-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.profile-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.profile-link {
+  font-size: 0.9rem;
+  color: var(--contact-accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.profile-link:hover {
+  text-decoration: underline;
+  color: #d17a00;
+  /* Darker accent on hover */
+}
+
 /* Improve flip button visibility on dark backgrounds */
 .card-linkedin .contact-card-front .card-flip-btn,
 .card-github .contact-card-front .card-flip-btn,
@@ -243,7 +302,7 @@
   /* rounded corners clip image */
 }
 
-.contact-card-back img {
+.contact-card-back>img {
   width: 100%;
   height: 100%;
   object-fit: cover;
