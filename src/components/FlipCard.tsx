@@ -29,7 +29,7 @@ const FlipCard = ({ title, frontImage, backContent, isWide = false, targetUrl, c
                             )
                         )}
                         <h3>{title}</h3>
-                        {description && <p className="card-description-front">{description}</p>}
+                        {description && <p className="card-description-front" dangerouslySetInnerHTML={{ __html: description }}></p>}
                     </div>
                     <button className="card-flip-btn" onClick={() => setFlipped(true)} aria-label="Flip Card">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
