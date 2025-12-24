@@ -461,7 +461,7 @@ html {
   grid-row-gap: 10px;
   align-items: center;
   transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1), background 420ms ease, box-shadow 320ms ease;
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0);
   transform-style: preserve-3d;
   will-change: transform, box-shadow;
 }
@@ -469,7 +469,7 @@ html {
 .edu-card:hover {
   transform: perspective(800px) translateY(-8px) rotateX(2deg) rotateY(-1deg);
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.9));
-  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 22px 48px rgba(250, 250, 250, 0.1);
 }
 
 .edu-card::before {

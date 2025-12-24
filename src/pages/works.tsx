@@ -11,7 +11,7 @@ type NavItem = { id: string; label: string };
 
 export default function Works() {
   const bubbleCount = 10;
-  const darkBubbleCount = 6;
+  const darkBubbleCount = 0;
   const bubbleRefs = useRef<(HTMLSpanElement | null)[]>([]);
 
   useEffect(() => {
@@ -219,15 +219,15 @@ export default function Works() {
                   <a
                     role="menuitem"
                     className={`navlink ${activeId === id ? 'active' : ''}`}
-                  href={`#${id}`}
-                  onClick={(e) => { e.preventDefault(); handleNavClick(id); }}
+                    href={`#${id}`}
+                    onClick={(e) => { e.preventDefault(); handleNavClick(id); }}
                   >
-                  <i className={`bi ${iconMap[id] ?? 'bi-dot'}`} aria-hidden="true"></i>
-                  <span>{label}</span>
+                    <i className={`bi ${iconMap[id] ?? 'bi-dot'}`} aria-hidden="true"></i>
+                    <span>{label}</span>
                   </a>
                 </li>
               ))}
-              </ul>
+            </ul>
           </aside>
         )}
         {isMobile && menuOpen && <div className="drawer-backdrop" onClick={() => setMenuOpen(false)} />}
