@@ -1,5 +1,5 @@
 import { achievements } from '../data/achievement';
-import '../styles/achievements.css';
+import '../styles/Achievements.css';
 
 export default function Achievements() {
   return (
