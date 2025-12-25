@@ -6,6 +6,7 @@ import FancyButton from "./components/fancybutton";
 import { useEffect, useRef, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import NextPage from "./pages/works";
+import meImg from "./assets/me.png";
 
 function Home() {
   const [ready, setReady] = useState(false);
@@ -82,9 +83,9 @@ function Home() {
           <div className="subtitle">ECE . EMBEDDED SYSTEMS . SOFTWARE EXPLORER</div>
           <h1 className="headline">Hello, I'm Guru Sakthi S</h1>
           <p className="bio">
-           &nbsp; &nbsp; &nbsp; &nbsp; A perfectionist with a determined mind, I explore the space
-between electronics and software. I learn quickly, work
-relentlessly, and build with intent.
+            &nbsp; &nbsp; &nbsp; &nbsp; A perfectionist with a determined mind, I explore the space
+            between electronics and software. I learn quickly, work
+            relentlessly, and build with intent.
           </p>
           <div className="button-group">
             <a
@@ -96,16 +97,16 @@ relentlessly, and build with intent.
               }}
             >
               View My CV
-             <i className="bi bi-eye-fill"></i>
+              <i className="bi bi-eye-fill"></i>
             </a>
             <FancyButton />
           </div>
         </div>
-      
+
         <div className="right-section">
           <div className="organic-shape">
             <div className="portrait-placeholder">
-              <img src="src/assets/me.png" alt="Profile" />
+              <img src={meImg} alt="Profile" />
             </div>
           </div>
         </div>

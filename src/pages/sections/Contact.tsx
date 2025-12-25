@@ -4,6 +4,12 @@ import "../styles/Contacts.css";
 import { contactData } from "../data/contact";
 import FlipCard from "../../components/FlipCard";
 
+import inImg from "../../assets/in.png";
+import linkedInImg from "../../assets/linked-in.png";
+import gitImg from "../../assets/git.png";
+import githubImg from "../../assets/github.png";
+import emailImg from "../../assets/email.png";
+
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
@@ -35,7 +41,7 @@ export default function Contact() {
       await emailjs.send(serviceID, templateID, {
         from_name: name,
         from_email: email,
-        message: message,
+        message: `${message}\n\n--- Contact Details ---\nName: ${name}\nEmail: ${email}`,
         to_email: "deeplearningextra@gmail.com"
       }, publicKey);
 
@@ -103,21 +109,21 @@ export default function Contact() {
           <div className="contact-card-grid">
             <FlipCard
               title="LinkedIn"
-              frontImage="src/assets/in.png"
+              frontImage={inImg}
               targetUrl="https://www.linkedin.com/in/gsak2985"
-              backContent={<img src="src/assets/Linked In.png" alt="LinkedIn QR" />}
+              backContent={<img src={linkedInImg} alt="LinkedIn QR" />}
               className="card-linkedin"
             />
             <FlipCard
               title="GitHub"
-              frontImage="src/assets/git.png"
+              frontImage={gitImg}
               targetUrl="https://github.com/GSak29"
-              backContent={<img src="src/assets/GitHub.png" alt="GitHub QR" />}
+              backContent={<img src={githubImg} alt="GitHub QR" />}
               className="card-github"
             />
             <FlipCard
               title={contactData.frontTitle}
-              frontImage="src/assets/email.png"
+              frontImage={emailImg}
               targetUrl={`mailto:${contactData.mailtoEmail}`}
               description={contactData.frontDescription}
               backContent={

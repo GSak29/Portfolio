@@ -1,25 +1,40 @@
+import cImg from "../../assets/c.png";
+import dsaImg from "../../assets/dsa.png";
+import reactImg from "../../assets/react.svg";
+import eiotImg from "../../assets/eiot.png";
+import linuxImg from "../../assets/linux.png";
+import gitImg from "../../assets/git.png";
+import projectsImg from "../../assets/unwanted/projects.png"; // Fixed path based on search
+import psImg from "../../assets/ps.png";
+import ctImg from "../../assets/ct.png";
+import dmImg from "../../assets/dm.png";
+import twImg from "../../assets/tw.png";
+import lsImg from "../../assets/ls.png";
+import comImg from "../../assets/com.png";
+import aboutImg from "../../assets/about.png";
+
 export default function Skills() {
   const icon = (name: string) => {
     const map: Record<string, string> = {
-      'Programming': 'src/assets/c.png',
-      'Data Structures & Algorithms': 'src/assets/dsa.png',
-      'Web & App Development': 'src/assets/react.svg',
-      'Embedded Systems & IoT': 'src/assets/eiot.png',
-      'Linux & Developer Tools': 'src/assets/linux.png',
-      'Version Control': 'src/assets/git.png',
+      'Programming': cImg,
+      'Data Structures & Algorithms': dsaImg,
+      'Web & App Development': reactImg,
+      'Embedded Systems & IoT': eiotImg,
+      'Linux & Developer Tools': linuxImg,
+      'Version Control': gitImg,
     }
-    return map[name] ?? 'src/assets/projects.png'
+    return map[name] ?? projectsImg
   }
   const softIcon = (name: string) => {
     const map: Record<string, string> = {
-      'Problem Solving': 'src/assets/ps.png',
-      'Critical Thinking': 'src/assets/ct.png',
-      'Debugging Mindset': 'src/assets/dm.png',
-      'Teamwork': 'src/assets/tw.png',
-      'Leadership': 'src/assets/ls.png',
-      'Communication': 'src/assets/com.png',
+      'Problem Solving': psImg,
+      'Critical Thinking': ctImg,
+      'Debugging Mindset': dmImg,
+      'Teamwork': twImg,
+      'Leadership': lsImg,
+      'Communication': comImg,
     }
-    return map[name] ?? 'src/assets/about.png'
+    return map[name] ?? aboutImg
   }
   const techCards = [
     { title: 'Programming', subs: ['C', 'C++', 'Java', 'Python'] },

@@ -1,30 +1,35 @@
+import kecImg from "../../assets/kec.png";
+import bvbImg from "../../assets/bvb.png";
+import ehknImg from "../../assets/ehkn.png";
+import aboutImg from "../../assets/about.png";
+
 export default function About() {
   return (
     <div id="about" className="section">
       <div className="section-header section-header--center">
         <h1 className="section-title">A Little More About Me . . . <i className="bi bi-emoji-sunglasses"></i></h1>
-    </div>
+      </div>
       <div className="about-stage">
         <div className="about-left">
           <div className="edu-grid cards-row">
             <div className="edu-card">
-              <img className="edu-thumb" src="src/assets/kec.png" alt="Kongu Engineering College" />
+              <img className="edu-thumb" src={kecImg} alt="Kongu Engineering College" />
               <div className="edu-title">Kongu Engineering College </div>
               <div className="edu-desc">B.E in Electronics and Communication Engineering </div>
               <div className="edu-desc">CGPA :: 9.04 </div>
               <a className="edu-link" target="_blank" href="https://kongu.ac.in/" aria-label="Explore High School">Explore <i className="bi bi-box-arrow-up-right"></i></a>
             </div>
             <div className="edu-card">
-              <img className="edu-thumb" src="src/assets/bvb.png" alt="STEM Clubs" />
+              <img className="edu-thumb" src={bvbImg} alt="STEM Clubs" />
               <div className="edu-title">Bharathi Vidhya Bhavan Hr.sec School</div>
               <div className="edu-desc">Completed my Higher Studies Securing</div>
               <div className="edu-desc">12th Grade : 85.33% & 11th Grade : 92%</div>
               <a className="edu-link" href="https://thebvb.com/home-bvb-matric-hr-sec-school/" target="_blank" aria-label="Explore STEM Clubs">Explore <i className="bi bi-box-arrow-up-right"></i></a>
             </div>
             <div className="edu-card">
-              <img className="edu-thumb" src="src/assets/ehkn.png" alt="Competitions" />
-              <div className="edu-title">Erode Hindu Kalvi Nilayam <br/> Primary & Nursery School</div>
-               <div className="edu-desc">Why not to mention..!!, this is the place <br/>where they put foundation for building myself</div>
+              <img className="edu-thumb" src={ehknImg} alt="Competitions" />
+              <div className="edu-title">Erode Hindu Kalvi Nilayam <br /> Primary & Nursery School</div>
+              <div className="edu-desc">Why not to mention..!!, this is the place <br />where they put foundation for building myself</div>
               <a className="edu-link" href="https://www.ehkn.edu.in/" target="_blank" aria-label="Explore Competitions">Explore <i className="bi bi-box-arrow-up-right"></i></a>
             </div>
           </div>
@@ -44,7 +49,7 @@ export default function About() {
         <div className="about-photo" aria-hidden>
           <div className="organic-shape">
             <div className="portrait-placeholder">
-              <img className="about-photo-img" src="src/assets/about.png" alt="About portrait" />
+              <img className="about-photo-img" src={aboutImg} alt="About portrait" />
             </div>
           </div>
         </div>
