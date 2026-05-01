@@ -20,7 +20,7 @@ export default function Projects() {
             
             {/* Image */}
             <div className="card__img">
-              <img src={project.image} alt={project.title} />
+              <img src={project.image} alt={project.title} loading="lazy" decoding="async" />
             </div>
 
             {/* Content */}

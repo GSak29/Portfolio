@@ -41,16 +41,17 @@ html {
   --local-padding: 0;
   padding: var(--local-padding);
   min-height: 90vh;
-  /* Increased for better vertical centering */
   max-height: none;
   overflow: visible;
   scroll-margin-top: 64px;
   display: grid;
   align-content: center;
-  /* Changed from start to center */
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 600ms ease, transform 600ms ease;
+  /* Skip rendering off-screen sections — biggest perf win for long pages */
+  content-visibility: auto;
+  contain-intrinsic-size: 0 90vh;
 }
 
 .section-wrapper.is-visible {

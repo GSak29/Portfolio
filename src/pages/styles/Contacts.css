@@ -216,7 +216,9 @@
   flex-shrink: 0;
   animation: orb-float ease-in-out infinite;
   cursor: pointer;
-  z-index: 1;  /* above the ::before/::after rings */
+  z-index: 1;
+  will-change: transform;  /* GPU layer — smooth float animation */
+  transform: translateZ(0); /* Force compositing layer */
 }
 
 .orb-inner {
@@ -288,8 +290,11 @@
   object-fit: contain;
   position: relative;
   z-index: 3;
-  filter: drop-shadow(0 3px 10px rgba(0,0,0,0.15));
+  /* filter is intentionally NOT animated — it causes repaints every frame */
+  filter: drop-shadow(0 3px 8px rgba(0,0,0,0.18));
+  will-change: transform;
   transition: transform 0.35s cubic-bezier(0.22,1,0.36,1);
+  image-rendering: -webkit-optimize-contrast;
 }
 
 .orb:hover .orb-icon { transform: scale(1.15) translateY(-3px); }

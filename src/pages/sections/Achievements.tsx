@@ -28,8 +28,9 @@ export default function Achievements() {
                   src={item.image} 
                   alt={item.title} 
                   className="achievement-img"
+                  loading="lazy"
+                  decoding="async"
                   onError={(e) => {
-                    // Fallback if image fails to load
                     (e.target as HTMLImageElement).style.display = 'none';
                     (e.target as HTMLImageElement).parentElement!.style.backgroundColor = 'var(--site-accent)';
                   }}
