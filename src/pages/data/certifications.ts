@@ -21,8 +21,8 @@ export const certifications = [
   },
   {
     id: 3,
-    title: "Rashberry Pi-4",
-    description: "Trained & Got Hands-On Experience On Rashberry Pi-4",
+    title: "Raspberry Pi-4",
+    description: "Trained & Got Hands-On Experience On Raspberry Pi-4",
     image: piImg,
     link:
       "https://www.linkedin.com/feed/update/urn:li:activity:7229523034531930116?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7229523034531930116%2C7292934949437882370%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287292934949437882370%2Curn%3Ali%3Aactivity%3A7229523034531930116%29"
